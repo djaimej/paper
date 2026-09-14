@@ -1,6 +1,5 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { INTERFACE_INTERACTION } from '@shared/constants/icons';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
@@ -9,31 +8,13 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   imports: [CommonModule, AngularSvgIconModule],
   templateUrl: './tag.html',
   styleUrl: './tag.scss',
-  standalone: true,
-  animations: [
-    trigger('openCloseAlert', [
-      state('open', style({
-        top: '0px',
-        opacity: 1,
-        'z-index': 2000
-      })),
-      state('closed', style({
-        top: '40px',
-        opacity: 0,
-        'z-index': -1
-      })),
-      transition('closed <=> open', [
-        animate(250)
-      ])
-    ])
-  ]
+  standalone: true
 })
-export class Tag {
+export class Tag implements OnInit {
   @Input() disipable: boolean = false;
   @Input() type: 'white' | 'black' = 'white';
   @Input() text: string = '';
-  open: boolean = true;
-  src: string = '';
+  visible = signal(true);
   srcClose: string = '';
 
   ngOnInit(): void {
@@ -41,9 +22,6 @@ export class Tag {
   }
 
   close(): void {
-    this.text = '';
-    setTimeout(() => {
-      this.open = false;
-    }, 500);
+    this.visible.set(false);
   }
 }

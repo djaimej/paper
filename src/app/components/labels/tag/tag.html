@@ -1,4 +1,6 @@
-<div [ngClass]="{'disipable': disipable}" [class]="'tag ' + type" [@openCloseAlert]="text ? 'open' : 'closed'" *ngIf="open">
+@if (visible()) {
+  <div [ngClass]="{'disipable': disipable}" [class]="'tag ' + type" animate.enter="tag-enter" animate.leave="tag-leave">
     <span>{{text}}</span>
     <svg-icon *ngIf="disipable" [src]="srcClose" [ngStyle]="{'cursor': 'pointer'}" (click)="close()"></svg-icon>
-</div>
+  </div>
+}

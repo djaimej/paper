@@ -1,6 +1,5 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { IIcon } from '@models/interfaces/icon';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
@@ -9,24 +8,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   imports: [CommonModule, AngularSvgIconModule],
   templateUrl: './toast.html',
   styleUrl: './toast.scss',
-  standalone: true,
-  animations: [
-    trigger('openCloseAlert', [
-      state('open', style({
-        top: '0px',
-        opacity: 1,
-        'z-index': 2000
-      })),
-      state('closed', style({
-        top: '40px',
-        opacity: 0,
-        'z-index': -1
-      })),
-      transition('closed <=> open', [
-        animate(250)
-      ])
-    ])
-  ]
+  standalone: true
 })
 export class Toast implements OnInit {
   @Input() color: 'white' | 'black' = 'black';
@@ -35,7 +17,7 @@ export class Toast implements OnInit {
     library: 'interface-interaction',
     file: 'info-circle.svg'
   };
-  open: boolean = true;
+  visible = signal(true);
   src: string = '';
   srcClose: string = 'icons/interface-interaction/close-exit.svg';
 
@@ -44,10 +26,6 @@ export class Toast implements OnInit {
   }
 
   close(): void {
-    this.message = '';
-    setTimeout(() => {
-      this.open = false;
-    }, 500);
+    this.visible.set(false);
   }
-
 }

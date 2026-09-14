@@ -1,5 +1,7 @@
-<div [class]="'badge ' + type" [@openCloseAlert]="text ? 'open' : 'closed'" *ngIf="open">
+@if (visible()) {
+  <div [class]="'badge ' + type" animate.enter="badge-enter" animate.leave="badge-leave">
     <svg-icon [src]="src"></svg-icon>
     <span>{{text}}</span>
     <svg-icon [src]="srcClose" [ngStyle]="{'cursor': 'pointer'}" (click)="close()"></svg-icon>
-</div>
+  </div>
+}
