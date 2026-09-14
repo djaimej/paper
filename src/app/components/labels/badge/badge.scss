@@ -1,0 +1,38 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2em;
+    font-size: var(--size-08);
+    padding: 0.5em;
+    border-radius: var(--s-05);
+    border: var(--border-width) solid;
+    span {
+        font-family: PatrickHand, sans-serif;
+        padding: 0 0.5em;
+    }
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+}
+
+.default {
+    background-color: var(--gray-200);
+    border-color: var(--gray-200);
+}
+
+.white {
+    border-color: var(--gray-200);
+}
+
+.black {
+    color: var(--white);
+    background-color: var(--black);
+    border-color: var(--black);
+    svg {
+        path {
+          fill: var(--white);
+        }
+    }
+}

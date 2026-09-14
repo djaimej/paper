@@ -1,0 +1,7 @@
+<article class="switch-container">
+  <label class="switch">
+    <input [(ngModel)]="value" [id]="id" type="checkbox" [disabled]="disabled">
+    <span class="slider"></span>
+  </label>
+  <span class="label" [ngClass]="{'disabled': disabled}"> {{label}}</span>
+</article>

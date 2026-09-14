@@ -1,1 +1,158 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'assets/theme.scss';
+@use "assets/fonts.scss";
+
+/* ============ RESET Y NORMALIZACIÓN ============ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: Inter, sans-serif;
+  line-height: 1.5;
+  font-size: var(--size-12) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* ============ TIPOGRAFÍA ============ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: var(--size-32);
+}
+
+h2 {
+  font-size: var(--size-28);
+}
+
+h3 {
+  font-size: var(--size-24);
+}
+
+h4 {
+  font-size: var(--size-20);
+}
+
+h5 {
+  font-size: var(--size-16);
+}
+
+h6 {
+  font-size: var(--size-12);
+}
+
+p {
+  font-family: PatrickHand, sans-serif;
+  font-size: var(--size-10);
+}
+
+/* ============ ELEMENTOS INTERACTIVOS ============ */
+a {
+  color: var(--black);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--gray-600);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+input,
+select,
+textarea {
+  font-family: Inter, sans-serif;
+  border: var(--border);
+  background-color: var(--white);
+  border-radius: var(--s-05);
+  color: var(--black);
+  padding: 0 0.5em;
+  line-height: inherit;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+/* ============ COMPONENTES ============ */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: PatrickHand, sans-serif;
+  font-size: var(--size-10);
+
+  th,
+  td {
+    padding: 0.5em;
+    text-align: left;
+    border-bottom: var(--border);
+  }
+
+  th {
+    font-weight: 700;
+    padding: 0.5em;
+  }
+}
+
+svg-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    path {
+      fill: var(--black);
+    }
+  }
+}
+
+/* ============ UTILIDADES ============ */
+.hidden-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pointer-none {
+  pointer-events: none;
+}
+
+/* ============ ANIMACIONES Y TRANSICIONES ============ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

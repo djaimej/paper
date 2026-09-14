@@ -1,0 +1,76 @@
+svg-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0;
+
+  svg {
+    display: none;
+    width: var(--size-10);
+    height: var(--size-10);
+  }
+
+  .label {
+    font-family: PatrickHand, sans-serif;
+    font-size: var(--size-10);
+  }
+}
+
+/* Hide the browser's default checkbox */
+.radio .invisible {
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/* Create a custom checkbox */
+.radio .mark {
+  position: relative;
+  float: left;
+  width: var(--size-10);
+  height: var(--size-10);
+  border: var(--border-width) solid var(--black);
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio:hover input~.mark {
+  background-color: var(--white);
+}
+
+/* When the checkbox is checked, add background */
+.radio input:checked~.mark {
+  background-color: var(--black);
+}
+
+.radio input:checked~path {
+  fill: var(--white);
+}
+
+.radio input:checked~.label {
+  color: var(--gray-500);
+  text-decoration: line-through;
+}
+
+/* Show the checkmark when checked */
+.radio input:checked~.mark {
+  display: block;
+
+  path {
+    fill: var(--white);
+  }
+
+  svg {
+    display: block;
+  }
+}

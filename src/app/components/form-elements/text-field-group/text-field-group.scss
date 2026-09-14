@@ -1,0 +1,33 @@
+.field-group {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    width: 100%;
+    font-family: PatrickHand, sans-serif !important;
+    font-size: var(--size-08); // 16px;
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 100%;
+    height: var(--size-20); // 48px;
+    font-size: var(--size-10);
+  }
+
+  .field-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .hint {
+      font-family: PatrickHand, sans-serif !important;
+      font-size: var(--size-08); // 16px;
+    }
+
+    .counter {
+      font-family: PatrickHand, sans-serif !important;
+      font-size: var(--size-08); // 16px;
+    }
+  }
+}

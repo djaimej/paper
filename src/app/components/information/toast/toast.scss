@@ -1,0 +1,40 @@
+.toast {
+  width: 100%;
+  height: var(--size-30); // 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5em;
+  border-radius: var(--s-05);
+  border: var(--border-width) solid var(--black);
+
+  span {
+    width: 100%;
+    padding-left: 0.5em;
+    font-family: PatrickHand, sans-serif;
+    font-size: var(--size-10) // 16px;
+  }
+
+  svg {
+    width: var(--size-12); // 24px;
+    width: var(--size-12); // 24px;
+  }
+}
+
+.black {
+  color: var(--white);
+  background-color: var(--black);
+
+  path {
+    fill: var(--white);
+  }
+}
+
+.white {
+  color: var(--black);
+  background-color: var(--white);
+
+  path {
+    fill: var(--black);
+  }
+}

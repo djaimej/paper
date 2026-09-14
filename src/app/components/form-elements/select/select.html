@@ -1,0 +1,4 @@
+<select [(ngModel)]="value" [name]="name" [id]="id" [disabled]="disabled">
+  <option disabled selected hidden [ngValue]="undefined">{{placeholder}}</option>
+  <option [value]="option.value" *ngFor="let option of options">{{option.label}}</option>
+</select>

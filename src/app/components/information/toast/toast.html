@@ -1,0 +1,5 @@
+<div class="toast" [class]="color" [@openCloseAlert]="message ? 'open' : 'closed'" *ngIf="open">
+    <svg-icon [src]="src"></svg-icon>
+    <span>{{message}}</span>
+    <svg-icon [src]="srcClose" [ngStyle]="{'cursor': 'pointer'}" (click)="close()"></svg-icon>
+</div>

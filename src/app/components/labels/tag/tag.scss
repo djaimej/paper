@@ -1,0 +1,38 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2em;
+    font-size: var(--size-08);
+    padding: 0.5em;
+    border-radius: var(--s-05);
+    border: var(--border-width) solid;
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+    span {
+        font-family: PatrickHand, sans-serif;
+    }
+}
+
+.disipable {
+    span {
+        padding-right: 0.5em;
+    }
+}
+
+.white {
+    border-color: var(--black);
+}
+
+.black {
+    color: var(--white);
+    background-color: var(--black);
+    border-color: var(--black);
+    svg {
+        path {
+          fill: var(--white);
+        }
+    }
+}

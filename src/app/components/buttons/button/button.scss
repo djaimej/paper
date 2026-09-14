@@ -1,0 +1,92 @@
+:host {
+  display: inline-block;
+  font-family: Inter, sans-serif;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--s-05);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    line-height: inherit;
+    padding: 0 0.5em;
+    position: relative;
+
+    &:disabled {
+      background-color: var(--gray-500);
+      cursor: not-allowed;
+    }
+    
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  // Size variants
+  &.lg {
+    button {
+      height: var(--size-28);
+      font-size: var(--size-14);
+    }
+  }
+
+  &.md {
+    button {
+      height: var(--size-20);
+      font-size: var(--size-10);
+    }
+  }
+
+  &.sm {
+    button {
+      height: var(--size-12);
+      font-size: var(--size-06);
+    }
+  }
+
+  // Color variants
+  &.solid {
+    button {
+      color: var(--white);
+      background-color: var(--black);
+      border: var(--border);
+
+      &:active:not(:disabled) {
+        background-color: var(--gray-600);
+        border-color: var(--gray-600);
+      }
+    }
+  }
+
+  &.outline {
+    button {
+      color: var(--black);
+      background-color: transparent;
+      border: var(--border);
+
+      &:active:not(:disabled) {
+        background-color: var(--gray-100);
+      }
+    }
+  }
+
+  &.ghost {
+    button {
+      background-color: transparent;
+      color: currentColor;
+      border: none;
+
+      &:active:not(:disabled) {
+        background-color: var(--gray-100);
+        border-color: var(--gray-100);
+      }
+    }
+  }
+}

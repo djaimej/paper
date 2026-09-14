@@ -1,0 +1,70 @@
+.checkbox {
+  --checkbox-size: var(--size-12, 1em);
+  --checkmark-color: var(--black, #000);
+  --background-checked: var(--black, #000);
+  --background-unchecked: var(--white, #fff);
+  --border-radius: var(--s-05, 0.25em);
+
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+
+  
+  font-family: PatrickHand, sans-serif;
+  font-size: var(--size-10);
+  line-height: 1em;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__checkmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border: var(--border-width) solid var(--checkmark-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-unchecked);
+    transition: background-color 0.2s ease;
+
+    svg-icon {
+      display: none;
+      width: calc(var(--checkbox-size) * 0.75);
+      height: calc(var(--checkbox-size) * 0.75);
+
+      path {
+        fill: var(--background-unchecked);
+      }
+    }
+  }
+
+  &__input:checked + &__checkmark {
+    background-color: var(--background-checked);
+
+    svg-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      path {
+        fill: var(--background-unchecked);
+      }
+    }
+  }
+
+  &__input:disabled + &__checkmark {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover &__input:not(:disabled) + &__checkmark {
+    opacity: 0.8;
+  }
+}
