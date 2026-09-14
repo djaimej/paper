@@ -79,10 +79,6 @@ a {
     color: var(--gray-600);
     text-decoration: underline;
   }
-
-  &:focus-visible {
-    outline: none;
-  }
 }
 
 input,
@@ -95,10 +91,11 @@ textarea {
   color: var(--black);
   padding: 0 0.5em;
   line-height: inherit;
+}
 
-  &:focus-visible {
-    outline: none;
-  }
+:where(a, button, input, select, textarea):focus-visible {
+  outline: var(--border-width) solid var(--black);
+  outline-offset: 2px;
 }
 
 /* ============ COMPONENTES ============ */

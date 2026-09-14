@@ -14,7 +14,7 @@
   display: inline-block;
   width: var(--size-25);
   height: calc(var(--size-25) / 2);
-  
+
   input {
     opacity: 0;
     width: 0;
@@ -66,4 +66,9 @@ input:checked+.slider::before {
 input:checked+.slider {
   background-color: var(--black);
   color: var(--white);
+}
+
+.switch input:focus-visible + .slider {
+  outline: var(--border-width) solid var(--black);
+  outline-offset: 2px;
 }

@@ -11,7 +11,7 @@
   user-select: none;
   position: relative;
 
-  
+
   font-family: PatrickHand, sans-serif;
   font-size: var(--size-10);
   line-height: 1em;
@@ -67,4 +67,9 @@
   &:hover &__input:not(:disabled) + &__checkmark {
     opacity: 0.8;
   }
+}
+
+.checkbox__input:focus-visible + .checkbox__checkmark {
+  outline: var(--border-width) solid var(--black);
+  outline-offset: 2px;
 }

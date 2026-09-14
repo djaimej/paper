@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output } from '@angular/core';
 import { IIcon } from '@models/interfaces/icon';
 import { Size, Variant } from '@models/types/properties';
 import { ButtonType } from '@models/types/button';
@@ -13,21 +13,20 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonIcon implements OnInit {
+export class ButtonIcon implements OnChanges {
   @Input() icon: IIcon = INTERFACE_INTERACTION.link;
   @Input() variant: Variant = 'solid';
   @Input() type: ButtonType = 'button';
   @Input() size: Size = 'md';
   @Input() disabled = false;
   @Output() onClick = new EventEmitter<Event>();
-  src: string = ''
+  src = '';
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.src = `icons/${this.icon.library}/${this.icon.file}`;
   }
 
   @HostBinding('class') get classes(): string {
-    this.src = `icons/${this.icon.library}/${this.icon.file}`;
     return `${this.size} ${this.variant} ${this.disabled ? 'disabled' : ''}`;
   }
 

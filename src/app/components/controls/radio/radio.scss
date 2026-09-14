@@ -74,3 +74,8 @@ svg-icon {
     display: block;
   }
 }
+
+.radio input:focus-visible ~ .mark {
+  outline: var(--border-width) solid var(--black);
+  outline-offset: 2px;
+}

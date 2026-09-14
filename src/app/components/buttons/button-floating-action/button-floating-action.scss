@@ -34,10 +34,6 @@ svg-icon {
       background-color: var(--gray-500);
       cursor: not-allowed;
     }
-
-    &:focus-visible {
-      outline: none;
-    }
   }
 
   // Color variants

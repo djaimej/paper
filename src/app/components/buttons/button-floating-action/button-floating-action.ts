@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output } from '@angular/core';
 import { IIcon } from '@models/interfaces/icon';
 import { Variant } from '@models/types/properties';
 import { ButtonType } from '@models/types/button';
@@ -13,20 +13,19 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonFloatingAction {
+export class ButtonFloatingAction implements OnChanges {
   @Input() icon: IIcon = INTERFACE_INTERACTION.plus;
   @Input() variant: Variant = 'solid';
   @Input() type: ButtonType = 'button';
   @Input() disabled = false;
-  @Output() onClick = new EventEmitter<any>();
-  src: string = ''
+  @Output() onClick = new EventEmitter<Event>();
+  src = '';
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.src = `icons/${this.icon.library}/${this.icon.file}`;
   }
 
   @HostBinding('class') get classes(): string {
-    this.src = `icons/${this.icon.library}/${this.icon.file}`;
     return `${this.variant} ${this.disabled ? 'disabled' : ''}`;
   }
 

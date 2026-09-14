@@ -10,7 +10,7 @@
   cursor: pointer;
   user-select: none;
   position: relative;
-  
+
   &__label {
     font-family: PatrickHand, sans-serif;
     font-size: var(--size-10);
@@ -61,7 +61,7 @@
     }
   }
 
-  
+
   &__input:checked ~.checkbox__label {
     color: var(--gray-500);
     text-decoration: line-through;
@@ -75,4 +75,9 @@
   &:hover &__input:not(:disabled) + &__checkmark {
     opacity: 0.8;
   }
+}
+
+.checkbox__input:focus-visible + .checkbox__checkmark {
+  outline: var(--border-width) solid var(--black);
+  outline-offset: 2px;
 }

@@ -1,4 +1,4 @@
-import { ComponentRef, Directive, ElementRef, EmbeddedViewRef, HostListener, Injector, Input, ViewContainerRef } from '@angular/core';
+import { ComponentRef, Directive, ElementRef, EmbeddedViewRef, HostListener, Injector, Input, OnDestroy, ViewContainerRef } from '@angular/core';
 import { Tooltip } from '@components/information/tooltip/tooltip';
 import { Color } from '@models/enums';
 import { TooltipPosition } from '@models/enums/tooltip';
@@ -7,7 +7,7 @@ import { TooltipPosition } from '@models/enums/tooltip';
   selector: '[tooltip]',
   standalone: true
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
   @Input() tooltip = '';
   @Input() position: TooltipPosition = TooltipPosition.BELOW;
   @Input() color: Color = Color.WHITE;
@@ -50,7 +50,7 @@ export class TooltipDirective {
   onTouchStart($event: TouchEvent): void {
     $event.preventDefault();
     window.clearTimeout(this.touchTimeout);
-    this.touchTimeout = window.setTimeout(this.initializeTooltip.bind(this), this.hideTimeout);
+    this.touchTimeout = window.setTimeout(this.initializeTooltip.bind(this), this.showDelay);
   }
 
   @HostListener('touchend')
@@ -61,7 +61,7 @@ export class TooltipDirective {
 
   private initializeTooltip() {
     if (this.componentRef === null) {
-      window.clearInterval(this.hideDelay);
+      window.clearTimeout(this.hideTimeout);
       this.componentRef = this.viewContainerRef.createComponent(Tooltip, {
         injector: this.injector
       });
@@ -77,7 +77,7 @@ export class TooltipDirective {
       this.componentRef.instance.position = this.position;
       this.componentRef.instance.color = this.color;
 
-      const {left, right, top, bottom} = this.elementRef.nativeElement.getBoundingClientRect();
+      const { left, right, top, bottom } = this.elementRef.nativeElement.getBoundingClientRect();
 
       switch (this.position) {
         case TooltipPosition.BELOW: {
@@ -122,12 +122,12 @@ export class TooltipDirective {
   }
 
   destroy(): void {
+    window.clearTimeout(this.showTimeout);
+    window.clearTimeout(this.hideTimeout);
+    window.clearTimeout(this.touchTimeout);
     if (this.componentRef !== null) {
-      window.clearInterval(this.showTimeout);
-      window.clearInterval(this.hideDelay);
       this.componentRef.destroy();
       this.componentRef = null;
     }
   }
-
 }
