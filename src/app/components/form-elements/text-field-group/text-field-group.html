@@ -1,8 +1,9 @@
 <div class="field-group">
-  <span class="label">{{label}}</span>
-  <input [(ngModel)]="value" [id]="id" [placeholder]="placeholder" [disabled]="disabled" [maxLength]="maxLength" type="text">
+  <span class="label">{{ label() }}</span>
+  <input #el type="text" [id]="id()" [value]="controlValue() ?? ''" [placeholder]="placeholder()"
+    [disabled]="isDisabled()" [maxLength]="maxLength()" (input)="update(el.value)" />
   <div class="field-bottom">
-    <span class="hint">{{hint}}</span>
-    <span class="counter">{{length}}/{{maxLength}}</span>
+    <span class="hint">{{ hint() }}</span>
+    <span class="counter">{{ length() }}/{{ maxLength() }}</span>
   </div>
 </div>

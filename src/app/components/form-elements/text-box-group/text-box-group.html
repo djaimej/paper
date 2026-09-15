@@ -1,8 +1,9 @@
 <div class="field-group">
-  <span class="label">{{label}}</span>
-  <textarea [(ngModel)]="value" [id]="id" [placeholder]="placeholder" [maxLength]="maxLength" [disabled]="disabled"></textarea>
+  <span class="label">{{ label() }}</span>
+  <textarea #el [id]="id()" [value]="controlValue() ?? ''" [placeholder]="placeholder()" [maxLength]="maxLength()"
+    [disabled]="isDisabled()" (input)="update(el.value)"></textarea>
   <div class="field-bottom">
-    <span class="hint">{{hint}}</span>
-    <span class="counter">{{length}}/{{maxLength}}</span>
+    <span class="hint">{{ hint() }}</span>
+    <span class="counter">{{ length() }}/{{ maxLength() }}</span>
   </div>
 </div>

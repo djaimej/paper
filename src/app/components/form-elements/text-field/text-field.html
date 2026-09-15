@@ -1,1 +1,2 @@
-<input [(ngModel)]="value" [id]="id" [placeholder]="placeholder" [disabled]="disabled" type="text">
+<input #el type="text" [id]="id()" [value]="controlValue() ?? ''" [placeholder]="placeholder()"
+  [disabled]="isDisabled()" (input)="update(el.value)" />

@@ -11,7 +11,5 @@ runCvaContract<string>('TextField', {
     input.dispatchEvent(new Event('input'));
     return 'hola';
   },
-  // TODO(fase-1): los CVA de string no tienen getter, writeValue no llega al DOM.
-  // La clase base lo corrige — poner en true entonces.
-  writeValueReflects: false,
+  // writeValueReflects ya no hace falta: la base lo refleja.
 });

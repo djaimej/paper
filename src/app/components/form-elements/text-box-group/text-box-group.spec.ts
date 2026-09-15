@@ -1,23 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TextBoxGroup } from './text-box-group';
+import { runCvaContract } from '@shared/testing/cva-contract';
 
-describe('TextBoxGroup', () => {
-  let component: TextBoxGroup;
-  let fixture: ComponentFixture<TextBoxGroup>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TextBoxGroup]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(TextBoxGroup);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+runCvaContract<string>('TextBox', {
+  component: TextBoxGroup,
+  nativeSelector: 'textarea',
+  writtenValue: 'hola',
+  readView: (el) => el.value,
+  userInput: (el) => { el.value = 'hola'; el.dispatchEvent(new Event('input')); return 'hola'; },
 });
