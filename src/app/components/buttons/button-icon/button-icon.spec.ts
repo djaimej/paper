@@ -1,23 +1,29 @@
-import { ButtonIcon } from './button-icon';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
+import { ButtonIcon } from './button-icon';
 
 describe('ButtonIcon', () => {
-  let component: ButtonIcon;
-  let fixture: ComponentFixture<ButtonIcon>;
+  const create = () => {
+    TestBed.configureTestingModule({ imports: [ButtonIcon], providers: [...ICON_TEST_PROVIDERS] });
+    return TestBed.createComponent(ButtonIcon);
+  };
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ButtonIcon],
-      providers: [...ICON_TEST_PROVIDERS],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(ButtonIcon);
-    component = fixture.componentInstance;
+  it('emits onClick when enabled', () => {
+    const fixture = create();
     fixture.detectChanges();
+    const seen: Event[] = [];
+    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+    fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
+    expect(seen).toHaveLength(1);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('does not emit onClick when disabled', () => {
+    const fixture = create();
+    fixture.componentRef.setInput('disabled', true);
+    fixture.detectChanges();
+    const seen: Event[] = [];
+    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+    fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
+    expect(seen).toHaveLength(0);
   });
 });

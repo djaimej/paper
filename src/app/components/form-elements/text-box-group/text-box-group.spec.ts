@@ -2,7 +2,7 @@ import { TextBoxGroup } from './text-box-group';
 import { runCvaContract } from '@shared/testing/cva-contract';
 
 
-runCvaContract<string>('TextBox', {
+runCvaContract<string>('TextBoxGroup', {
   component: TextBoxGroup,
   nativeSelector: 'textarea',
   writtenValue: 'hola',

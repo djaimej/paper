@@ -1,28 +1,24 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { IIcon } from '@models/interfaces/icon';
 import { INTERFACE_INTERACTION } from '@shared/constants/icons';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-badge',
-  imports: [CommonModule, AngularSvgIconModule],
+  imports: [AngularSvgIconModule],
   templateUrl: './badge.html',
   styleUrl: './badge.scss',
-  standalone: true
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Badge implements OnInit {
-  @Input() icon: IIcon = INTERFACE_INTERACTION.check;
-  @Input() type: 'default' | 'white' | 'black' = 'default';
-  @Input() text: string = '';
-  visible = signal(true);
-  src: string = '';
-  srcClose: string = '';
+export class Badge {
+  readonly icon = input<IIcon>(INTERFACE_INTERACTION.check);
+  readonly type = input<'default' | 'white' | 'black'>('default');
+  readonly text = input('');
 
-  ngOnInit(): void {
-    this.src = `icons/${this.icon.library}/${this.icon.file}`;
-    this.srcClose = `icons/${INTERFACE_INTERACTION.clearXSolid.library}/${INTERFACE_INTERACTION.clearXSolid.file}`;
-  }
+  protected readonly visible = signal(true);
+  protected readonly src = computed(() => `icons/${this.icon().library}/${this.icon().file}`);
+  protected readonly srcClose =
+    `icons/${INTERFACE_INTERACTION.clearXSolid.library}/${INTERFACE_INTERACTION.clearXSolid.file}`;
 
   close(): void {
     this.visible.set(false);

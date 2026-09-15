@@ -1,7 +1,7 @@
 import { TextFieldGroup } from './text-field-group';
 import { runCvaContract } from '@shared/testing/cva-contract';
 
-runCvaContract<string>('TextField', {
+runCvaContract<string>('TextFieldGroup', {
   component: TextFieldGroup,
   nativeSelector: 'input',
   writtenValue: 'hola',

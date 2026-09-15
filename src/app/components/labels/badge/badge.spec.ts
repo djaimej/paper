@@ -1,23 +1,13 @@
-import { Badge } from './badge';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
+import { Badge } from './badge';
 
 describe('Badge', () => {
-  let component: Badge;
-  let fixture: ComponentFixture<Badge>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Badge],
-      providers: [...ICON_TEST_PROVIDERS],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Badge);
-    component = fixture.componentInstance;
+  it('renders the text input', () => {
+    TestBed.configureTestingModule({ imports: [Badge], providers: [...ICON_TEST_PROVIDERS] });
+    const fixture = TestBed.createComponent(Badge);
+    fixture.componentRef.setInput('text', 'Nuevo');
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.nativeElement.textContent).toContain('Nuevo');
   });
 });

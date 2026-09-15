@@ -1,7 +1,7 @@
 @if (visible()) {
-  <div [class]="'badge ' + type" animate.enter="badge-enter" animate.leave="badge-leave">
-    <svg-icon [src]="src"></svg-icon>
-    <span>{{text}}</span>
-    <svg-icon [src]="srcClose" [ngStyle]="{'cursor': 'pointer'}" (click)="close()"></svg-icon>
-  </div>
+<div [class]="'badge ' + type()" animate.enter="badge-enter" animate.leave="badge-leave">
+  <svg-icon [src]="src()"></svg-icon>
+  <span>{{ text() }}</span>
+  <svg-icon class="close" [src]="srcClose" (click)="close()"></svg-icon>
+</div>
 }

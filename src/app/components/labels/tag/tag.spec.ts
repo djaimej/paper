@@ -1,23 +1,12 @@
 import { Tag } from './tag';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
+import { TestBed } from '@angular/core/testing';
 
 describe('Tag', () => {
-  let component: Tag;
-  let fixture: ComponentFixture<Tag>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Tag],
-      providers: [...ICON_TEST_PROVIDERS],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Tag);
-    component = fixture.componentInstance;
+  it('renders the text input', () => {
+    TestBed.configureTestingModule({ imports: [Tag] });
+    const fixture = TestBed.createComponent(Tag);
+    fixture.componentRef.setInput('text', 'Nuevo');
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.nativeElement.textContent).toContain('Nuevo');
   });
 });

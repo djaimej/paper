@@ -1,25 +1,22 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { INTERFACE_INTERACTION } from '@shared/constants/icons';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-tag',
-  imports: [CommonModule, AngularSvgIconModule],
+  imports: [AngularSvgIconModule],
   templateUrl: './tag.html',
   styleUrl: './tag.scss',
-  standalone: true
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Tag implements OnInit {
-  @Input() disipable: boolean = false;
-  @Input() type: 'white' | 'black' = 'white';
-  @Input() text: string = '';
-  visible = signal(true);
-  srcClose: string = '';
+export class Tag {
+  readonly disipable = input(false);
+  readonly type = input<'white' | 'black'>('white');
+  readonly text = input('');
 
-  ngOnInit(): void {
-    this.srcClose = `icons/${INTERFACE_INTERACTION.clearX.library}/${INTERFACE_INTERACTION.clearX.file}`;
-  }
+  protected readonly visible = signal(true);
+  protected readonly srcClose =
+    `icons/${INTERFACE_INTERACTION.clearX.library}/${INTERFACE_INTERACTION.clearX.file}`;
 
   close(): void {
     this.visible.set(false);

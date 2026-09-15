@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Select } from './select';
 
-describe('Select · ControlValueAccessor', () => {
+describe('Select', () => {
   it('refleja writeValue y emite en change', () => {
     TestBed.configureTestingModule({ imports: [Select] });
     const fixture = TestBed.createComponent(Select);

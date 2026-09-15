@@ -2,9 +2,13 @@ import { ButtonFloatingAction } from './button-floating-action';
 import { TestBed } from '@angular/core/testing';
 import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
 
-describe('ButtonIcon', () => {
+describe('ButtonFloatingAction', () => {
   const create = () => {
-    TestBed.configureTestingModule({ imports: [ButtonFloatingAction], providers: [...ICON_TEST_PROVIDERS] });
+    TestBed.configureTestingModule({
+      imports: [
+        ButtonFloatingAction],
+      providers: [...ICON_TEST_PROVIDERS]
+    });
     return TestBed.createComponent(ButtonFloatingAction);
   };
 
