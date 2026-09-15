@@ -1,23 +1,12 @@
 import { Radio } from './radio';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { runCvaContract } from '@shared/testing/cva-contract';
 import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
 
-describe('Radio', () => {
-  let component: Radio;
-  let fixture: ComponentFixture<Radio>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Radio],
-      providers: [...ICON_TEST_PROVIDERS],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Radio);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+runCvaContract<boolean>('Radio', {
+  component: Radio,
+  nativeSelector: 'input[type="radio"]',
+  writtenValue: true,
+  readView: (input) => input.checked,
+  userInput: (input) => { input.checked = true; input.dispatchEvent(new Event('change')); return true; },
+  providers: [...ICON_TEST_PROVIDERS],
 });

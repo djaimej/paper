@@ -1,5 +1,6 @@
 <label class="checkbox">
-  <input [(ngModel)]="value" [id]="id" class="checkbox__input" type="checkbox" [disabled]="disabled">
+  <input #el [id]="id()" class="checkbox__input" type="checkbox" [checked]="controlValue()" [disabled]="isDisabled()"
+    (change)="update(el.checked)">
   <span class="checkbox__checkmark">
     <svg-icon src="icons/interface-interaction/check.svg" aria-hidden="true"></svg-icon>
   </span>&nbsp;<ng-content></ng-content>

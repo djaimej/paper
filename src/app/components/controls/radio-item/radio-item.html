@@ -1,7 +1,8 @@
 <label class="radio">
-  <input [(ngModel)]="checked" [id]="id" [name]="name" [value]="value" class="invisible" type="radio" [disabled]="disabled">
+  <input #el [id]="id()" [name]="name()" [value]="value()" class="invisible" type="radio" [checked]="controlValue()"
+    [disabled]="isDisabled()" (change)="update(el.checked)">
   <span class="mark">
     <svg-icon src="icons/interface-interaction/check.svg"></svg-icon>
   </span>
-  <span class="label">{{label}}</span>
+  <span class="label">{{ label() }}</span>
 </label>
