@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { IIcon } from '@models/interfaces/icon';
 import { Variant } from '@models/types/properties';
 import { ButtonType } from '@models/types/button';
@@ -10,28 +10,26 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   imports: [AngularSvgIconModule],
   templateUrl: './button-floating-action.html',
   styleUrl: './button-floating-action.scss',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class]': 'classes()',
+    '(click)': 'onClickButton($event)',
+  },
 })
-export class ButtonFloatingAction implements OnChanges {
-  @Input() icon: IIcon = INTERFACE_INTERACTION.plus;
-  @Input() variant: Variant = 'solid';
-  @Input() type: ButtonType = 'button';
-  @Input() disabled = false;
-  @Output() onClick = new EventEmitter<Event>();
-  src = '';
+export class ButtonFloatingAction {
+  readonly icon = input<IIcon>(INTERFACE_INTERACTION.plus);
+  readonly variant = input<Variant>('solid');
+  readonly type = input<ButtonType>('button');
+  readonly disabled = input(false);
+  readonly onClick = output<Event>();
 
-  ngOnChanges(): void {
-    this.src = `icons/${this.icon.library}/${this.icon.file}`;
-  }
+  protected readonly src = computed(() => `icons/${this.icon().library}/${this.icon().file}`);
+  protected readonly classes = computed(
+    () => `${this.variant()} ${this.disabled() ? 'disabled' : ''}`,
+  );
 
-  @HostBinding('class') get classes(): string {
-    return `${this.variant} ${this.disabled ? 'disabled' : ''}`;
-  }
-
-  @HostListener('click', ['$event'])
   onClickButton(event: Event): void {
-    if (this.disabled) {
+    if (this.disabled()) {
       event.preventDefault();
       event.stopPropagation();
       return;

@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { Button } from './button';
 
 describe('Button', () => {
-  let component: Button;
-  let fixture: ComponentFixture<Button>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Button]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(Button);
-    component = fixture.componentInstance;
+  it('emits onClick when enabled', () => {
+    const fixture = TestBed.createComponent(Button);
     fixture.detectChanges();
+    const seen: Event[] = [];
+    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+
+    fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
+    expect(seen).toHaveLength(1);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('does not emit onClick when disabled', () => {
+    const fixture = TestBed.createComponent(Button);
+    fixture.componentRef.setInput('disabled', true);
+    fixture.detectChanges();
+    const seen: Event[] = [];
+    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+
+    fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
+    expect(seen).toHaveLength(0);
   });
 });
