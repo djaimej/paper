@@ -1,23 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TextField } from './text-field';
+import { runCvaContract } from '@shared/testing/cva-contract';
 
-describe('TextField', () => {
-  let component: TextField;
-  let fixture: ComponentFixture<TextField>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TextField]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(TextField);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+runCvaContract<string>('TextField', {
+  component: TextField,
+  nativeSelector: 'input',
+  writtenValue: 'hola',
+  readView: (input) => input.value,
+  userInput: (input) => {
+    input.value = 'hola';
+    input.dispatchEvent(new Event('input'));
+    return 'hola';
+  },
+  // TODO(fase-1): los CVA de string no tienen getter, writeValue no llega al DOM.
+  // La clase base lo corrige — poner en true entonces.
+  writeValueReflects: false,
 });
