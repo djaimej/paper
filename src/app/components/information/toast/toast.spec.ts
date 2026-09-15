@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Toast } from './toast';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
 
 describe('Toast', () => {
   let component: Toast;
@@ -8,9 +8,9 @@ describe('Toast', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Toast]
-    })
-    .compileComponents();
+      imports: [Toast],
+      providers: [...ICON_TEST_PROVIDERS],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Toast);
     component = fixture.componentInstance;

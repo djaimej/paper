@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Tag } from './tag';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
 
 describe('Tag', () => {
   let component: Tag;
@@ -8,9 +8,9 @@ describe('Tag', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Tag]
-    })
-    .compileComponents();
+      imports: [Tag],
+      providers: [...ICON_TEST_PROVIDERS],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Tag);
     component = fixture.componentInstance;

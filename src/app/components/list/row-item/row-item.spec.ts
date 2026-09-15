@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RowItem } from './row-item';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
 
 describe('RowItem', () => {
   let component: RowItem;
@@ -8,9 +8,9 @@ describe('RowItem', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RowItem]
-    })
-    .compileComponents();
+      imports: [RowItem],
+      providers: [...ICON_TEST_PROVIDERS],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RowItem);
     component = fixture.componentInstance;

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TooltipDirective } from './tooltip.directive';
+import { By } from '@angular/platform-browser';
 
 @Component({
   standalone: true,
@@ -52,18 +53,23 @@ describe('TooltipDirective', () => {
     expect(tooltipInDom()).toBeNull();
   });
 
-  it('leaves no pending timers after destroy (regresión)', () => {
-    const baseline = vi.getTimerCount();
+  it('does not run the hide callback after destroy (regresión)', () => {
+    const directive = fixture.debugElement
+      .query(By.directive(TooltipDirective))
+      .injector.get(TooltipDirective);
+    const destroySpy = vi.spyOn(directive, 'destroy');
+
     fixture.componentInstance.hideDelay = 1000;
     fixture.detectChanges();
 
     trigger('mouseenter'); // programa showTimeout
-    trigger('mouseleave'); // programa hideTimeout
-    expect(vi.getTimerCount()).toBeGreaterThan(baseline);
+    trigger('mouseleave'); // programa hideTimeout -> destroy() a los 1000ms
+    expect(destroySpy).not.toHaveBeenCalled();
 
-    fixture.destroy(); // ngOnDestroy -> destroy() debe limpiar todo
+    fixture.destroy();     // ngOnDestroy -> destroy() (única llamada esperada)
+    expect(destroySpy).toHaveBeenCalledTimes(1);
 
-    expect(vi.getTimerCount()).toBe(baseline);
-    expect(tooltipInDom()).toBeNull();
+    vi.advanceTimersByTime(2000); // si el hideTimeout sobreviviera, dispararía destroy otra vez
+    expect(destroySpy).toHaveBeenCalledTimes(1);
   });
 });

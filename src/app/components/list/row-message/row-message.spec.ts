@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RowMessage } from './row-message';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
 
 describe('RowMessage', () => {
   let component: RowMessage;
@@ -8,9 +8,9 @@ describe('RowMessage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RowMessage]
-    })
-    .compileComponents();
+      imports: [RowMessage],
+      providers: [...ICON_TEST_PROVIDERS],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RowMessage);
     component = fixture.componentInstance;

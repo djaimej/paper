@@ -13,7 +13,7 @@ export interface CvaContractOptions<T> {
   readonly readView: (native: HTMLInputElement) => T;
   /** Simula interacción del usuario; devuelve el valor que debería emitir. */
   readonly userInput: (native: HTMLInputElement) => T;
-    /** Providers extra (p. ej. svg-icon + HTTP de pruebas). */
+  /** Providers extra (p. ej. svg-icon + HTTP de pruebas). */
   readonly providers?: readonly (Provider | EnvironmentProviders)[];
   /** false mientras el componente no refleje writeValue en el DOM (se salta ese caso). */
   readonly writeValueReflects?: boolean;
@@ -40,8 +40,10 @@ export function runCvaContract<T>(name: string, options: CvaContractOptions<T>):
       expect(native, `ningún elemento coincide con "${options.nativeSelector}"`).not.toBeNull();
     });
 
-    (reflects ? it : it.skip)('refleja writeValue en la vista', () => {
+    (reflects ? it : it.skip)('refleja writeValue en la vista', async () => {
       cva.writeValue(options.writtenValue);
+      fixture.detectChanges();
+      await fixture.whenStable();   // ngModel refleja model/disabled en un microtask
       fixture.detectChanges();
       expect(options.readView(native)).toEqual(options.writtenValue);
     });
@@ -66,8 +68,10 @@ export function runCvaContract<T>(name: string, options: CvaContractOptions<T>):
       expect(onTouched).toHaveBeenCalled();
     });
 
-    it('deshabilita el control nativo con setDisabledState', () => {
+    it('deshabilita el control nativo con setDisabledState', async () => {
       cva.setDisabledState?.(true);
+      fixture.detectChanges();
+      await fixture.whenStable();
       fixture.detectChanges();
       expect(native.disabled).toBe(true);
     });

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Radio } from './radio';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ICON_TEST_PROVIDERS } from '@shared/testing/icon-testing';
 
 describe('Radio', () => {
   let component: Radio;
@@ -8,9 +8,9 @@ describe('Radio', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Radio]
-    })
-    .compileComponents();
+      imports: [Radio],
+      providers: [...ICON_TEST_PROVIDERS],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Radio);
     component = fixture.componentInstance;
