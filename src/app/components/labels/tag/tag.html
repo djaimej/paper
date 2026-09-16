@@ -1,5 +1,5 @@
 @if (visible()) {
-<div class="tag" [class]="type()" [class.disipable]="disipable()" animate.enter="tag-enter" animate.leave="tag-leave">
+<div class="tag" [class]="type()" [class.disipable]="disipable()" animate.enter="slide-enter" animate.leave="slide-leave">
   <span>{{ text() }}</span>
   @if (disipable()) {
   <svg-icon class="close" [src]="srcClose" (click)="close()"></svg-icon>

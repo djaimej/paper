@@ -1,7 +1,8 @@
 @use 'assets/theme.scss';
 @use "assets/fonts.scss";
 
-/* ============ RESET Y NORMALIZACIÓN ============ */
+/* RESET Y NORMALIZACIÓN */
+
 *,
 *::before,
 *::after {
@@ -29,7 +30,8 @@ main {
   color: var(--black);
 }
 
-/* ============ TIPOGRAFÍA ============ */
+/* TIPOGRAFÍA */
+
 h1,
 h2,
 h3,
@@ -69,7 +71,6 @@ p {
   font-size: var(--size-10);
 }
 
-/* ============ ELEMENTOS INTERACTIVOS ============ */
 a {
   color: var(--black);
   text-decoration: none;
@@ -80,6 +81,8 @@ a {
     text-decoration: underline;
   }
 }
+
+/* ELEMENTOS Y UTILIDADES */
 
 input,
 select,
@@ -98,7 +101,6 @@ textarea {
   outline-offset: 2px;
 }
 
-/* ============ COMPONENTES ============ */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -130,7 +132,6 @@ svg-icon {
   }
 }
 
-/* ============ UTILIDADES ============ */
 .hidden-scroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -144,7 +145,8 @@ svg-icon {
   pointer-events: none;
 }
 
-/* ============ ANIMACIONES Y TRANSICIONES ============ */
+/* ANIMACIONES Y TRANSICIONES */
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -152,4 +154,42 @@ svg-icon {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Animación de entrada/salida para elementos (toast, badge, tag) */
+.slide-enter {
+  animation: slide-in 250ms ease-out;
+}
+
+.slide-leave {
+  animation: slide-out 250ms ease-in;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+/* Afordancia del icono de cierre */
+.close {
+  cursor: pointer;
 }

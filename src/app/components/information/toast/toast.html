@@ -1,5 +1,5 @@
 @if (visible()) {
-<div class="toast" [class]="color()" animate.enter="toast-enter" animate.leave="toast-leave">
+<div class="toast" [class]="color()" animate.enter="slide-enter" animate.leave="slide-leave">
   <svg-icon [src]="src()"></svg-icon>
   <span>{{ message() }}</span>
   <svg-icon class="close" [src]="srcClose" (click)="close()"></svg-icon>

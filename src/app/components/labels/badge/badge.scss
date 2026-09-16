@@ -39,39 +39,3 @@
     }
   }
 }
-
-.badge-enter {
-  animation: badge-slide-in 250ms ease-out;
-}
-
-.badge-leave {
-  animation: badge-slide-out 250ms ease-in;
-}
-
-@keyframes badge-slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes badge-slide-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-}
-
-.close {
-  cursor: pointer;
-}
