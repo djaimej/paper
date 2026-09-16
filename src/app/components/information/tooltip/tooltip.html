@@ -1,3 +1,4 @@
-<div class="tooltip" [ngClass]="['tooltip--'+position, 'tooltip--'+color]" [class.tooltip--visible]="visible" [style.left]="left + 'px'" [style.top]="top + 'px'">
-  {{tooltip}}
+<div class="tooltip" [class]="'tooltip--' + position() + ' tooltip--' + color()" [class.tooltip--visible]="visible()"
+  [style.left.px]="left()" [style.top.px]="top()">
+  {{ tooltip() }}
 </div>
