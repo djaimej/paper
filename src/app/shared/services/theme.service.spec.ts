@@ -1,9 +1,12 @@
+import { ApplicationRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Theme } from '@models/enums';
+import { createStorageMock } from '@shared/testing/local-storage-mock';
 import { ThemeService } from './theme.service';
 
 describe('ThemeService', () => {
-  beforeEach(() => localStorage.clear());
+  beforeEach(() => vi.stubGlobal('localStorage', createStorageMock()));
+  afterEach(() => vi.unstubAllGlobals());
 
   const create = () => {
     TestBed.configureTestingModule({});
@@ -35,7 +38,7 @@ describe('ThemeService', () => {
   it('persists the theme when it changes', () => {
     const service = create();
     service.set(Theme.DARK);
-    TestBed.tick(); // vacía el effect de persistencia
+    TestBed.inject(ApplicationRef).tick(); // vacía el effect de persistencia
     expect(localStorage.getItem('paper-theme')).toBe(Theme.DARK);
   });
 });
