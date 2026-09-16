@@ -7,7 +7,10 @@ import { ICheckbox } from '@models/interfaces/checkbox';
 import { IIcon } from '@models/interfaces/icon';
 import { IOption } from '@models/interfaces/select';
 import { ThemeService } from '@shared/services/theme.service';
+import { ToastService } from '@shared/services/toast.service';
+
 import { DATA_VISUALIZATION, EMOTICON, FOOD_DRINK, INTERFACE_INTERACTION, USERS_PEOPLE } from '@shared/constants/icons';
+
 import { Button } from './components/buttons/button/button';
 import { ButtonIcon } from './components/buttons/button-icon/button-icon';
 import { ButtonFloatingAction } from './components/buttons/button-floating-action/button-floating-action';
@@ -30,11 +33,12 @@ import { RowMessage } from './components/list/row-message/row-message';
 import { Badge } from './components/labels/badge/badge';
 import { Tag } from './components/labels/tag/tag';
 import { TooltipDirective } from './shared/directives/tooltip.directive';
+import { ToastContainer } from './components/information/toast-container/toast-container';
 
 @Component({
   imports: [
     RouterOutlet, ReactiveFormsModule, FormsModule, TooltipDirective, Button, ButtonIcon, ButtonFloatingAction, Checkbox, CheckboxItem, Radio,
-    RadioItem, Switch, Select, TextFieldIcon, TextField, TextFieldGroup, TextBox, TextBoxGroup, Toast, Image, Icon, RowItem, RowMessage, Badge, Tag
+    RadioItem, Switch, Select, TextFieldIcon, TextField, TextFieldGroup, TextBox, TextBoxGroup, Toast, ToastContainer, Image, Icon, RowItem, RowMessage, Badge, Tag
   ],
   selector: 'app-root',
   styleUrl: './app.scss',
@@ -44,6 +48,7 @@ export class App {
   protected readonly title = signal('Paper');
   protected readonly theme = inject(ThemeService);
   protected readonly label = signal('This is your label');
+  protected readonly toast = inject(ToastService);
   userIcon: IIcon = USERS_PEOPLE.user;
   searchIcon: IIcon = INTERFACE_INTERACTION.search;
   bookmarkFullIcon: IIcon = INTERFACE_INTERACTION.bookmarkFull;

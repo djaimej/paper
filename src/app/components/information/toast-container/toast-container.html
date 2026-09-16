@@ -1,0 +1,7 @@
+<div class="toast-container">
+  @for (toast of service.toasts(); track toast.id) {
+    <app-toast [message]="toast.message" [color]="toast.color" [icon]="toast.icon"
+      (dismissed)="service.dismiss(toast.id)"
+      animate.enter="slide-enter" animate.leave="slide-leave"></app-toast>
+  }
+</div>

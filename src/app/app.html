@@ -140,7 +140,8 @@
     <div class="collection">
       <app-toast [message]="'Added to Saved List'" [color]="'black'"></app-toast>
       <app-toast [message]="'Added to Saved List'" [color]="'white'"></app-toast>
-      <app-toast [message]="'Added to Saved List'" [color]="'white'" [icon]="userIcon"></app-toast>
+
+      <app-button (onClick)="toast.show('¡Hello from service!')">Show toast</app-button>
     </div>
   </section>
   <section>
@@ -234,4 +235,5 @@
     </div>
   </section>
 </main>
+<app-toast-container></app-toast-container>
 <router-outlet />
