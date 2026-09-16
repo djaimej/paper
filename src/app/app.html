@@ -50,12 +50,12 @@
       <div class="set">
         <form [formGroup]="myForm">
           <app-checkbox formControlName="acceptTerms" key="form-terms"
-            ariaLabel="Acepto los términos y condiciones">&nbsp;Acepto los términos</app-checkbox>
+            ariaLabel="Acepto los términos y condiciones">&nbsp;I accept the terms and conditions.</app-checkbox>
         </form>
       </div>
       <div class="set">
-        <app-checkbox-item [id]="'checkbox-1'" [label]="'Label'"></app-checkbox-item>
-        <app-checkbox-item [id]="'checkbox-2'" [label]="'Label'"></app-checkbox-item>
+        <app-checkbox-item [id]="'checkbox-1'" [label]="'Check'"></app-checkbox-item>
+        <app-checkbox-item [id]="'checkbox-2'" [label]="'Another check'"></app-checkbox-item>
       </div>
     </div>
     <div class="collection">
@@ -65,9 +65,9 @@
         <app-radio [id]="'6'" value="3" [name]="'paper-radio'"></app-radio>
       </div>
       <div class="set">
-        <app-radio-item [id]="'ri-0'" [label]="'Name me'" value="1" [name]="'paper-radio-item'"></app-radio-item>
-        <app-radio-item [id]="'ri-1'" [label]="'Name me'" value="2" [name]="'paper-radio-item'"></app-radio-item>
-        <app-radio-item [id]="'ri-2'" [label]="'Name me'" value="3" [name]="'paper-radio-item'"></app-radio-item>
+        <app-radio-item [id]="'ri-0'" [label]="'Rock'" value="1" [name]="'paper-radio-item'"></app-radio-item>
+        <app-radio-item [id]="'ri-1'" [label]="'Paper'" value="2" [name]="'paper-radio-item'"></app-radio-item>
+        <app-radio-item [id]="'ri-2'" [label]="'Scissors'" value="3" [name]="'paper-radio-item'"></app-radio-item>
       </div>
       <div class="set">
         <app-switch [ngModel]="theme.isDark()" (ngModelChange)="theme.setDark($event)" [label]="'Dark mode'"
@@ -182,54 +182,54 @@
     <div class="collection">
       <b [color]="color.BLACK" [position]="position.RIGHT"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Right</b>
       <b [color]="color.WHITE" [position]="position.RIGHT"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Right</b>
       <b [color]="color.BLACK" [position]="position.DYNAMIC"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Dynamic</b>
       <b [color]="color.WHITE" [position]="position.DYNAMIC"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Dynamic</b>
     </div>
     <div class="collection">
       <b [color]="color.BLACK" [position]="position.BELOW"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Below</b>
       <b [color]="color.WHITE" [position]="position.BELOW"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Below</b>
       <b [color]="color.BLACK" [position]="position.LEFT"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Left</b>
       <b [color]="color.WHITE" [position]="position.LEFT"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Left</b>
       <b [color]="color.BLACK" [position]="position.ABOVE"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Above</b>
       <b [color]="color.WHITE" [position]="position.ABOVE"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-        Hover me</b>
+        Hover me, Above</b>
     </div>
   </section>
   <section>
     <div class="collection">
       <div class="set">
-        <app-badge [icon]="glassIcon" [text]="'Drink'"></app-badge>
-        <app-badge [icon]="pizzaSliceIcon" [text]="'Food'" [type]="'white'"></app-badge>
-        <app-badge [icon]="utensilsIcon" [text]="'Salad'" [type]="'black'"></app-badge>
+        <app-tag [text]="'You can hide me!'" [disipable]="true"></app-tag>
+        <app-tag [text]="'Hide me'" [type]="'black'" [disipable]="true"></app-tag>
+      </div>
+      <div class="set">
+        <app-tag [text]="'Tag'"></app-tag>
+        <app-tag [text]="'Another Tag'" [type]="'black'"></app-tag>
       </div>
     </div>
     <div class="collection">
       <div class="set">
-        <app-tag [text]="'Tag'" [disipable]="true"></app-tag>
-        <app-tag [text]="'Tag'" [type]="'black'" [disipable]="true"></app-tag>
-      </div>
-      <div class="set">
-        <app-tag [text]="'Tag'"></app-tag>
-        <app-tag [text]="'Tag'" [type]="'black'"></app-tag>
+        <app-badge [icon]="glassIcon" [text]="'Drink'"></app-badge>
+        <app-badge [icon]="pizzaSliceIcon" [text]="'Food'" [type]="'white'"></app-badge>
+        <app-badge [icon]="utensilsIcon" [text]="'Salad'" [type]="'black'"></app-badge>
       </div>
     </div>
   </section>
