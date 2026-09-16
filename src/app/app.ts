@@ -1,11 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Color, Theme } from '@models/enums';
+import { Color } from '@models/enums';
 import { TooltipPosition } from '@models/enums/tooltip';
 import { ICheckbox } from '@models/interfaces/checkbox';
 import { IIcon } from '@models/interfaces/icon';
 import { IOption } from '@models/interfaces/select';
+import { ThemeService } from '@shared/services/theme.service';
 import { DATA_VISUALIZATION, EMOTICON, FOOD_DRINK, INTERFACE_INTERACTION, USERS_PEOPLE } from '@shared/constants/icons';
 import { Button } from './components/buttons/button/button';
 import { ButtonIcon } from './components/buttons/button-icon/button-icon';
@@ -32,9 +33,8 @@ import { TooltipDirective } from './shared/directives/tooltip.directive';
 
 @Component({
   imports: [
-    RouterOutlet, ReactiveFormsModule, TooltipDirective, Button, ButtonIcon, ButtonFloatingAction, Checkbox, CheckboxItem, Radio,
-    RadioItem, Switch, Select, TextFieldIcon, TextField, TextFieldGroup, TextBox,
-    TextBoxGroup, Toast, Image, Icon, RowItem, RowMessage, Badge, Tag
+    RouterOutlet, ReactiveFormsModule, FormsModule, TooltipDirective, Button, ButtonIcon, ButtonFloatingAction, Checkbox, CheckboxItem, Radio,
+    RadioItem, Switch, Select, TextFieldIcon, TextField, TextFieldGroup, TextBox, TextBoxGroup, Toast, Image, Icon, RowItem, RowMessage, Badge, Tag
   ],
   selector: 'app-root',
   styleUrl: './app.scss',
@@ -42,6 +42,7 @@ import { TooltipDirective } from './shared/directives/tooltip.directive';
 })
 export class App {
   protected readonly title = signal('Paper');
+  protected readonly theme = inject(ThemeService);
   protected readonly label = signal('This is your label');
   userIcon: IIcon = USERS_PEOPLE.user;
   searchIcon: IIcon = INTERFACE_INTERACTION.search;
@@ -68,7 +69,6 @@ export class App {
   ];
   color: typeof Color = Color;
   position: typeof TooltipPosition = TooltipPosition;
-  appTheme: Theme;
 
   isChecked = false;
   myForm: FormGroup;
@@ -82,7 +82,6 @@ export class App {
     this.myForm.get('acceptTerms')?.valueChanges.subscribe(value => {
       console.log('Form value changed:', value);
     });
-    this.appTheme = Theme.LIGHT;
   }
 
   onCheckboxChange(event: ICheckbox): void {
@@ -96,9 +95,5 @@ export class App {
 
   action(): void {
     this.label.set(this.label.length <= 20 ? 'This is your action label' : 'This is your Label');
-  }
-
-  switchTheme(): void {
-    this.appTheme = this.appTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
   }
 }

@@ -60,7 +60,6 @@
 
 input:checked+.slider::before {
   transform: translatex(var(--size-10)); // translatex(18px);
-  transition: 0.2s;
 }
 
 input:checked+.slider {

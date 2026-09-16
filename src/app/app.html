@@ -1,4 +1,4 @@
-<main [class]="appTheme">
+<main>
   <section>
     <div class="collection">
       <div class="set">
@@ -70,7 +70,8 @@
         <app-radio-item [id]="'ri-2'" [label]="'Name me'" value="3" [name]="'paper-radio-item'"></app-radio-item>
       </div>
       <div class="set">
-        <app-switch (stateChange)="switchTheme()" [label]="'Switch'" [id]="'switch'"></app-switch>
+        <app-switch [ngModel]="theme.isDark()" (ngModelChange)="theme.setDark($event)" [label]="'Dark mode'"
+          [id]="'theme-switch'"></app-switch>
       </div>
     </div>
   </section>
