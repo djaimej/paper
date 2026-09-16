@@ -1,3 +1,5 @@
+@use '../button-base' as *;
+
 svg-icon {
   display: flex;
   align-items: center;
@@ -5,21 +7,12 @@ svg-icon {
 }
 
 :host {
-  display: inline-block;
-  font-family: Inter, sans-serif;
-
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+  @include host-base;
 
   button {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    position: relative;
     width: var(--size-20);
     height: var(--size-20);
     font-size: var(--size-10);
@@ -29,59 +22,7 @@ svg-icon {
       width: 1em;
       height: 1em;
     }
-
-    &:disabled {
-      background-color: var(--gray-500);
-      cursor: not-allowed;
-    }
   }
 
-  // Color variants
-  &.solid {
-    button {
-      background-color: var(--black);
-      border: var(--border-width) solid var(--black);
-
-      path {
-        fill: var(--white);
-      }
-
-      &:active:not(:disabled) {
-        background-color: var(--gray-600);
-        border-color: var(--gray-600);
-      }
-    }
-  }
-
-  &.outline {
-    button {
-      background-color: transparent;
-      border: var(--border-width) solid var(--black);
-
-      path {
-        fill: var(--black);
-      }
-
-      &:active:not(:disabled) {
-        background-color: var(--gray-100);
-      }
-    }
-  }
-
-  &.ghost {
-    button {
-      background-color: transparent;
-      color: currentColor;
-      border: none;
-
-      path {
-        fill: var(--black);
-      }
-
-      &:active:not(:disabled) {
-        background-color: var(--gray-100);
-        border-color: var(--gray-100);
-      }
-    }
-  }
+  @include variants;
 }
