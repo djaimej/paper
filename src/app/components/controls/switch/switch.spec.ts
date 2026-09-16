@@ -1,23 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Switch } from './switch';
+import { runCvaContract } from '@shared/testing/cva-contract';
 
-describe('Switch', () => {
-  let component: Switch;
-  let fixture: ComponentFixture<Switch>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Switch]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(Switch);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+runCvaContract<boolean>('Switch', {
+  component: Switch,
+  nativeSelector: 'input[type="checkbox"]',
+  writtenValue: true,
+  readView: (input) => input.checked,
+  userInput: (input) => { input.checked = true; input.dispatchEvent(new Event('change')); return true; },
 });

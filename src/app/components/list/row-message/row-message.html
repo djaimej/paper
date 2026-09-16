@@ -1,15 +1,18 @@
 <a (click)="onAction.emit()" class="message-row">
-    <div class="icon" *ngIf="imageSrc">
-        <img [src]="imageSrc" [alt]="label">
-    </div>
-    <div class="icon" *ngIf="!imageSrc">
-        <svg-icon [src]="src"></svg-icon>
-    </div>
-    <div class="text">
-        <label>
-            <span class="label">{{label}}</span>
-            <span class="date">{{date}}</span>
-        </label>
-        <span class="description">{{description}}</span>
-    </div>
+  @if (imageSrc()) {
+  <div class="icon">
+    <img [src]="imageSrc()" [alt]="label()">
+  </div>
+  } @else {
+  <div class="icon">
+    <svg-icon [src]="src"></svg-icon>
+  </div>
+  }
+  <div class="text">
+    <label>
+      <span class="label">{{ label() }}</span>
+      <span class="date">{{ date() }}</span>
+    </label>
+    <span class="description">{{ description() }}</span>
+  </div>
 </a>

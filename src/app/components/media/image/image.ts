@@ -1,25 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-image',
-  imports: [CommonModule, AngularSvgIconModule],
+  imports: [AngularSvgIconModule],
   templateUrl: './image.html',
   styleUrl: './image.scss',
-  standalone: true
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Image implements OnInit {
-  @Input() type: 'square' | 'circle' | 'skeleton' = 'square';
-  @Input() subtle: boolean = false;
-  @Input() size: number = 50;
-  @Input() aspectRatio: number = 1;
-  src: string = '';
+export class Image {
+  readonly type = input<'square' | 'circle' | 'skeleton'>('square');
+  readonly subtle = input(false);
+  readonly size = input(50);
+  readonly aspectRatio = input(1);
 
-  constructor() {}
-
-  ngOnInit(): void {
-    this.src = this.type === 'skeleton' ? 'media/skeleton.svg' : 'icons/imaging/image.svg';
-    this.aspectRatio = this.type === 'skeleton' ? 1 : this.aspectRatio;
-  }
+  protected readonly src = computed(() =>
+    this.type() === 'skeleton' ? 'media/skeleton.svg' : 'icons/imaging/image.svg',
+  );
+  protected readonly ratio = computed(() => (this.type() === 'skeleton' ? 1 : this.aspectRatio()));
 }

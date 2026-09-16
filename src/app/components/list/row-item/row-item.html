@@ -1,12 +1,14 @@
-<div class="row-item" [ngClass]="{'padding': padding}">
-    <div class="icon" *ngIf="src">
-        <svg-icon [src]="src"></svg-icon>
-    </div>
-    <div class="text">
-        <label>
-            <span class="label">{{label}}</span>
-            <a (click)="onAction.emit()" class="action">{{action}}</a>
-        </label>
-        <span class="description">{{description}}</span>
-    </div>
+<div class="row-item" [class.padding]="padding()">
+  @if (src()) {
+  <div class="icon">
+    <svg-icon [src]="src()"></svg-icon>
+  </div>
+  }
+  <div class="text">
+    <label>
+      <span class="label">{{ label() }}</span>
+      <a (click)="onAction.emit()" class="action">{{ action() }}</a>
+    </label>
+    <span class="description">{{ description() }}</span>
+  </div>
 </div>

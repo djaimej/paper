@@ -1,7 +1,8 @@
 <article class="switch-container">
   <label class="switch">
-    <input [(ngModel)]="value" [id]="id" type="checkbox" [disabled]="disabled">
+    <input #el [id]="id()" type="checkbox" [checked]="controlValue()" [disabled]="isDisabled()"
+      (change)="update(el.checked)">
     <span class="slider"></span>
   </label>
-  <span class="label" [ngClass]="{'disabled': disabled}"> {{label}}</span>
+  <span class="label" [class.disabled]="isDisabled()">{{ label() }}</span>
 </article>
