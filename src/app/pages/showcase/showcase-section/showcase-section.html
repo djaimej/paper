@@ -1,0 +1,11 @@
+<section class="doc-section">
+  <header>
+    <h3>{{ title() }}</h3>
+    @if (description()) {
+      <p>{{ description() }}</p>
+    }
+  </header>
+  <div class="doc-example">
+    <ng-content></ng-content>
+  </div>
+</section>

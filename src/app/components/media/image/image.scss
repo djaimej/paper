@@ -37,18 +37,6 @@
   }
 }
 
-.image.skeleton {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  svg {
-    width: 100%;
-    path {
-      stroke: var(--black);
-    }
-  }
-}
-
 svg-icon {
   width: 100%;
 }

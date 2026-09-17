@@ -1,0 +1,22 @@
+.doc-section {
+  margin-bottom: var(--s-15);
+
+  header {
+    margin-bottom: var(--s-05);
+
+    p {
+      color: var(--gray-500);
+    }
+  }
+}
+
+.doc-example {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--s-05);
+  padding: var(--s-08);
+  border: var(--border);
+  border-radius: var(--s-05);
+}

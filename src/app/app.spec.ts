@@ -1,24 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { provideAngularSvgIcon } from 'angular-svg-icon';
 
 describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-      providers: [
-        provideAngularSvgIcon(),
-        provideHttpClient(),
-        provideHttpClientTesting()
-      ]
-    }).compileComponents();
-  });
-
-  it('should create the app', () => {
+  it('creates the shell', () => {
+    TestBed.configureTestingModule({ imports: [App], providers: [provideRouter([])] });
     const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

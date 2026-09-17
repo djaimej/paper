@@ -1,0 +1,12 @@
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--s-08) var(--s-15);
+}
+
+.showcase-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-05);
+  padding: var(--s-10) 0;
+}
