@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ValueAccessorBase } from '@shared/base/value-accessor.base';
-import { provideValueAccessor } from '@shared/utils/provide-value-accessor';
+import { provideValueAccessor } from '@shared/providers/provide-value-accessor';
 
 @Component({
   selector: 'app-radio',
@@ -9,7 +9,7 @@ import { provideValueAccessor } from '@shared/utils/provide-value-accessor';
   templateUrl: './radio.html',
   styleUrl: './radio.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideValueAccessor(Radio)],
+  providers: [provideValueAccessor(() => Radio)],
 })
 export class Radio extends ValueAccessorBase<boolean> {
   readonly name = input('');

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ValueAccessorBase } from '@shared/base/value-accessor.base';
-import { provideValueAccessor } from '@shared/utils/provide-value-accessor';
+import { provideValueAccessor } from '@shared/providers/provide-value-accessor';
 
 @Component({
   selector: 'app-checkbox-item',
@@ -9,7 +9,7 @@ import { provideValueAccessor } from '@shared/utils/provide-value-accessor';
   templateUrl: './checkbox-item.html',
   styleUrl: './checkbox-item.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideValueAccessor(CheckboxItem)],
+  providers: [provideValueAccessor(() => CheckboxItem)],
 })
 export class CheckboxItem extends ValueAccessorBase<boolean> {
   readonly label = input('');
