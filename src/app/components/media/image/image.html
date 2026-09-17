@@ -1,3 +1,7 @@
-<div class="image" [class]="type()" [class.subtle]="subtle()" [style.aspect-ratio]="aspectRatio()" [style.width.%]="size()">
-  <svg-icon src="icons/imaging/image.svg"></svg-icon>
+<div class="image" [class]="type()" [style.aspect-ratio]="effectiveRatio()">
+  @if (src()) {
+    <img [src]="src()" [alt]="alt()">
+  } @else {
+    <svg-icon [src]="placeholder"></svg-icon>
+  }
 </div>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
@@ -10,7 +10,10 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 })
 export class Image {
   readonly type = input<'square' | 'circle'>('square');
-  readonly subtle = input(false);
-  readonly size = input(50);
-  readonly aspectRatio = input(1);
+  readonly ratio = input(1);
+  readonly src = input('');
+  readonly alt = input('');
+
+  protected readonly placeholder = 'icons/imaging/image.svg';
+  protected readonly effectiveRatio = computed(() => (this.type() === 'circle' ? 1 : this.ratio()));
 }

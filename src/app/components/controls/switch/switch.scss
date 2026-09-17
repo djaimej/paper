@@ -23,12 +23,12 @@
 }
 
 .switch input:disabled + .slider {
-  background-color: var(--gray-500) !important;
+  background-color: var(--gray-400) !important;
   transition: 0.5s;
 }
 
 .label.disabled {
-  color: var(--gray-500) !important;
+  color: var(--gray-400) !important;
 }
 
 .slider {

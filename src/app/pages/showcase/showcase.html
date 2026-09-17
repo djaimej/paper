@@ -62,8 +62,10 @@
   </app-showcase-section>
 
   <app-showcase-section title="Media" description="Imágenes placeholder e iconos.">
-    <app-image [type]="'square'" [size]="300"></app-image>
-    <app-image [type]="'circle'" [aspectRatio]="0.7" [size]="285" [subtle]="true"></app-image>
+    <!-- tamaño fijo -->
+    <div style="width: 120px"><app-image type="circle" /></div>
+    <!-- fluido con tope -->
+    <div style="max-width: 120px"><app-image [ratio]="3 / 4" src="images/placeholder.png" /></div>
     <app-icon size="sm"></app-icon>
     <app-icon></app-icon>
     <app-icon size="lg"></app-icon>
@@ -77,10 +79,9 @@
       [icon]="userIcon" [padding]="true"></app-row-item>
     <app-row-item [label]="'This is your label'" [description]="'This is your description'"
       [padding]="true"></app-row-item>
-    <app-row-message [imageSrc]="'images/placeholder.png'" [label]="'Message Label'"
-      [description]="'Message description'" [date]="'date'"></app-row-message>
+    <app-row-message [label]="'Message Label'" [description]="'Message description'" [date]="'date'"></app-row-message>
     <app-row-message [label]="'Message Label'" [description]="'No date'"></app-row-message>
-    <app-row-message [imageSrc]="'images/placeholder.png'" [label]="'No description'" [date]="'date'"></app-row-message>
+    <app-row-message [label]="'No description'" [date]="'date'"></app-row-message>
   </app-showcase-section>
 
   <app-showcase-section title="Tooltip" description="Descripción emergente sobre cualquier elemento; sigue el tema.">
@@ -100,4 +101,5 @@
       [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
       Hover me Above</b>
   </app-showcase-section>
+  <div style="height: 5rem;"></div>
 </main>
