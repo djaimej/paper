@@ -14,9 +14,16 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
   gap: var(--s-05);
   padding: var(--s-08);
   border: var(--border);
   border-radius: var(--s-05);
+}
+
+.doc-example.start {
+  justify-content: flex-start;
+}
+
+.doc-example.around {
+  justify-content: space-around;
 }

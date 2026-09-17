@@ -1,105 +1,113 @@
-<main>
-  <header class="showcase-header">
+<div class="showcase">
+  <aside class="showcase-nav">
     <h1>Paper</h1>
-    <p>Sistema de componentes minimalista para Angular.</p>
+    <nav>
+      @for (section of sections(); track section.anchor()) {
+      <a [href]="'#' + section.anchor()">{{ section.title() }}</a>
+      }
+    </nav>
     <app-switch [ngModel]="theme.isDark()" (ngModelChange)="theme.setDark($event)" [label]="'Dark mode'"
       [id]="'theme-switch'"></app-switch>
-  </header>
+  </aside>
 
-  <app-showcase-section title="Buttons"
-    description="Acción principal en tres variantes (solid, outline, ghost) y tres tamaños.">
-    <app-button size="lg" variant="solid">Solid</app-button>
-    <app-button size="lg" variant="outline">Outline</app-button>
-    <app-button size="lg" variant="ghost">Ghost</app-button>
-    <app-button size="md" variant="solid">Medium</app-button>
-    <app-button size="sm" variant="solid">Small</app-button>
-  </app-showcase-section>
+  <main class="showcase-content">
+    <app-showcase-section title="Buttons"
+      description="Acción principal en tres variantes (solid, outline, ghost) y tres tamaños." [code]="buttonsCode">
+      <app-button size="lg">Solid</app-button>
+      <app-button size="lg" variant="outline">Outline</app-button>
+      <app-button size="lg" variant="ghost">Ghost</app-button>
+      <app-button>Medium</app-button>
+      <app-button size="sm">Small</app-button>
+    </app-showcase-section>
 
-  <app-showcase-section title="Icon buttons" description="Botones con icono, con texto opcional al lado.">
-    <app-button-icon size="lg" variant="solid" [icon]="archiveIcon"></app-button-icon>
-    <app-button-icon size="md" variant="outline" [icon]="userIcon"></app-button-icon>
-    <app-button-icon size="sm" variant="ghost" [icon]="bookmarkFullIcon">&nbsp;Bookmark</app-button-icon>
-    <app-button-floating-action variant="solid" [icon]="userIcon"></app-button-floating-action>
-  </app-showcase-section>
+    <app-showcase-section title="Icon buttons" description="Botones con icono, con texto opcional al lado."
+      [code]="iconButtonsCode">
+      <app-button-icon size="lg" [icon]="archiveIcon"></app-button-icon>
+      <app-button-icon variant="outline" [icon]="userIcon"></app-button-icon>
+      <app-button-icon size="sm" variant="ghost" [icon]="bookmarkFullIcon">&nbsp;Bookmark</app-button-icon>
+      <app-button-floating-action [icon]="userIcon"></app-button-floating-action>
+    </app-showcase-section>
 
-  <app-showcase-section title="Selection controls"
-    description="Checkbox, radio y switch; funcionan con ngModel o formularios reactivos.">
-    <app-checkbox [id]="'cb'">&nbsp;Simple</app-checkbox>
-    <form [formGroup]="myForm">
-      <app-checkbox-item formControlName="acceptTerms" label="Acepto los términos"></app-checkbox-item>
-    </form>
-    <app-radio [id]="'r4'" value="1" [name]="'paper-radio'"></app-radio>
-    <app-radio [id]="'r5'" value="2" [name]="'paper-radio'"></app-radio>
-    <app-radio-item [id]="'ri0'" [label]="'Name me'" value="1" [name]="'paper-radio-item'"></app-radio-item>
-  </app-showcase-section>
+    <app-showcase-section title="Selection controls"
+      description="Checkbox, radio y switch; funcionan con ngModel o formularios reactivos."
+      [code]="selectionControlsCode">
+      <app-checkbox [id]="'cb'">&nbsp;Simple</app-checkbox>
+      <form [formGroup]="myForm">
+        <app-checkbox-item formControlName="deploy" label="Deploy to production"></app-checkbox-item>
+      </form>
+      <app-radio [id]="'r4'" value="1" [name]="'paper-radio'"></app-radio>
+      <app-radio [id]="'r5'" value="2" [name]="'paper-radio'"></app-radio>
+      <app-radio-item [id]="'ri0'" [label]="'Name me'" value="1" [name]="'paper-radio-item'"></app-radio-item>
+    </app-showcase-section>
 
-  <app-showcase-section title="Form fields"
-    description="Entradas de texto, con icono, agrupadas con etiqueta/contador, y áreas de texto.">
-    <app-select [id]="'s7'" [options]="options"></app-select>
-    <app-text-field-icon [id]="'8'" [icon]="searchIcon" [placeholder]="'Search'"></app-text-field-icon>
-    <app-text-field [id]="'9'" [placeholder]="'Lorem ipsum'"></app-text-field>
-    <app-text-field-group [id]="'10'" [hint]="'Hint'" [label]="'label'" [maxLength]="32"
-      [placeholder]="'Lorem ipsum'"></app-text-field-group>
-    <app-text-box [id]="'11'" [placeholder]="'Lorem ipsum'"></app-text-box>
-    <app-text-box-group [id]="'12'" [hint]="'Hint'" [label]="'label'" [maxLength]="32"
-      [placeholder]="'Lorem ipsum'"></app-text-box-group>
-  </app-showcase-section>
+    <app-showcase-section title="Form fields"
+      description="Entradas de texto, con icono, agrupadas con etiqueta/contador, y áreas de texto."
+      [code]="formFieldsCode">
+      <app-select [id]="'s7'" [options]="options"></app-select>
+      <app-text-field-icon [id]="'8'" [icon]="searchIcon" [placeholder]="'Search'"></app-text-field-icon>
+      <app-text-field [id]="'9'" [placeholder]="'Lorem ipsum'"></app-text-field>
+      <app-text-field-group [id]="'10'" [hint]="'Hint'" [label]="'label'" [maxLength]="32"
+        [placeholder]="'Lorem ipsum'"></app-text-field-group>
+      <app-text-box [id]="'11'" [placeholder]="'Lorem ipsum'"></app-text-box>
+      <app-text-box-group [id]="'12'" [hint]="'Hint'" [label]="'label'" [maxLength]="32"
+        [placeholder]="'Lorem ipsum'"></app-text-box-group>
+    </app-showcase-section>
 
-  <app-showcase-section title="Toast"
-    description="Notificaciones efímeras por servicio; se apilan y se auto-descartan.">
-    <app-button (onClick)="toast.show('¡Hola desde el servicio!')">Lanzar toast</app-button>
-  </app-showcase-section>
+    <app-showcase-section title="Toast"
+      description="Notificaciones efímeras por servicio; se apilan y se auto-descartan." [code]="toastCode">
+      <app-button (clicked)="toast.show('No more paper!')">Show toast</app-button>
+    </app-showcase-section>
 
-  <app-showcase-section title="Labels" description="Badges y tags para estados y metadatos.">
-    <app-badge [icon]="glassIcon" [text]="'Drink'"></app-badge>
-    <app-badge [icon]="pizzaSliceIcon" [text]="'Food'" [type]="'white'"></app-badge>
-    <app-badge [icon]="utensilsIcon" [text]="'Salad'" [type]="'black'"></app-badge>
+    <app-showcase-section title="Labels" description="Badges y tags para estados y metadatos." [code]="labelsCode">
+      <app-badge [icon]="glassIcon" [text]="'Drink'"></app-badge>
+      <app-badge [icon]="pizzaSliceIcon" [text]="'Food'" [type]="'white'"></app-badge>
+      <app-badge [icon]="utensilsIcon" [text]="'Salad'" [type]="'black'"></app-badge>
 
-    <app-tag [text]="'You can hide me!'" [dismissible]="true"></app-tag>
-    <app-tag [text]="'Hide me'" [type]="'black'" [dismissible]="true"></app-tag>
-    <app-tag [text]="'Tag'"></app-tag>
-    <app-tag [text]="'Another Tag'" [type]="'black'"></app-tag>
-  </app-showcase-section>
+      <app-tag [text]="'You can hide me!'" [dismissible]="true"></app-tag>
+      <app-tag [text]="'Hide me'" [type]="'black'" [dismissible]="true"></app-tag>
+      <app-tag [text]="'Tag'"></app-tag>
+      <app-tag [text]="'Another Tag'" [type]="'black'"></app-tag>
+    </app-showcase-section>
 
-  <app-showcase-section title="Media" description="Imágenes placeholder e iconos.">
-    <!-- tamaño fijo -->
-    <div style="width: 120px"><app-image type="circle" /></div>
-    <!-- fluido con tope -->
-    <div style="max-width: 120px"><app-image [ratio]="3 / 4" src="images/placeholder.png" /></div>
-    <app-icon size="sm"></app-icon>
-    <app-icon></app-icon>
-    <app-icon size="lg"></app-icon>
-  </app-showcase-section>
+    <app-showcase-section title="Media" description="Imágenes placeholder e iconos." [code]="mediaCode">
+      <div style="max-width: 120px"><app-image [ratio]="3 / 4" src="images/placeholder.png" /></div>
+      <div style="width: 120px"><app-image type="circle" /></div>
+      <app-icon size="sm"></app-icon>
+      <app-icon></app-icon>
+      <app-icon size="lg"></app-icon>
+    </app-showcase-section>
 
-  <app-showcase-section title="List" description="Filas de listado y de mensaje.">
-    <app-row-item [label]="title()" [description]="'This is your description'" [action]="'edit'"></app-row-item>
-    <app-row-item [label]="'This is your label'" [description]="'This is your description'" [action]="'edit'"
-      [icon]="userIcon"></app-row-item>
-    <app-row-item [label]="'This is your label'" [description]="'This is your description'" [action]="'edit'"
-      [icon]="userIcon" [padding]="true"></app-row-item>
-    <app-row-item [label]="'This is your label'" [description]="'This is your description'"
-      [padding]="true"></app-row-item>
-    <app-row-message [label]="'Message Label'" [description]="'Message description'" [date]="'date'"></app-row-message>
-    <app-row-message [label]="'Message Label'" [description]="'No date'"></app-row-message>
-    <app-row-message [label]="'No description'" [date]="'date'"></app-row-message>
-  </app-showcase-section>
+    <app-showcase-section title="List" justify="around" description="Filas de listado y de mensaje." [code]="listCode">
+      <app-row-item [label]="title()" [description]="'This is your description'" [action]="'edit'"></app-row-item>
+      <app-row-item [label]="'This is your label'" [description]="'This is your description'" [action]="'edit'"
+        [icon]="userIcon"></app-row-item>
+      <app-row-item [label]="'This is your label'" [description]="'This is your description'" [action]="'edit'"
+        [icon]="userIcon" [padding]="true"></app-row-item>
+      <app-row-item [label]="'This is your label'" [description]="'This is your description'"
+        [padding]="true"></app-row-item>
+      <app-row-message [label]="'Message Label'" [description]="'Message description'"
+        [date]="'date'"></app-row-message>
+      <app-row-message [label]="'Message Label'" [description]="'No date'"></app-row-message>
+      <app-row-message [label]="'No description'" [date]="'date'"></app-row-message>
+    </app-showcase-section>
 
-  <app-showcase-section title="Tooltip" description="Descripción emergente sobre cualquier elemento; sigue el tema.">
-    <b [color]="color.BLACK" [position]="position.RIGHT"
-      [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-      Hover me Right</b>
-    <b [color]="color.WHITE" [position]="position.DYNAMIC"
-      [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-      Hover me Dynamic</b>
-    <b [color]="color.BLACK" [position]="position.BELOW"
-      [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-      Hover me Below</b>
-    <b [color]="color.WHITE" [position]="position.LEFT"
-      [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-      Hover me Left</b>
-    <b [color]="color.BLACK" [position]="position.ABOVE"
-      [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
-      Hover me Above</b>
-  </app-showcase-section>
-  <div style="height: 5rem;"></div>
-</main>
+    <app-showcase-section title="Tooltip" description="Descripción emergente sobre cualquier elemento; sigue el tema."
+      [code]="tooltipCode">
+      <b [color]="color.BLACK" [position]="position.RIGHT"
+        [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
+        Hover me Right</b>
+      <b [color]="color.WHITE" [position]="position.DYNAMIC"
+        [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
+        Hover me Dynamic</b>
+      <b [color]="color.BLACK" [position]="position.BELOW"
+        [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
+        Hover me Below</b>
+      <b [color]="color.WHITE" [position]="position.LEFT"
+        [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
+        Hover me Left</b>
+      <b [color]="color.BLACK" [position]="position.ABOVE"
+        [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
+        Hover me Above</b>
+    </app-showcase-section>
+  </main>
+</div>

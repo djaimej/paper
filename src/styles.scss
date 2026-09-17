@@ -20,8 +20,7 @@ body {
   min-height: 100%;
   margin: 0;
   font-family: Inter, sans-serif;
-  line-height: 1.5;
-  font-size: var(--size-12) !important;
+  font-size: var(--size-10);
   background-color: var(--white);
   color: var(--black);
   -webkit-font-smoothing: antialiased;
@@ -65,7 +64,6 @@ h6 {
 
 p {
   font-family: PatrickHand, sans-serif;
-  font-size: var(--size-10);
 }
 
 a {
@@ -102,7 +100,6 @@ textarea {
   width: 100%;
   border-collapse: collapse;
   font-family: PatrickHand, sans-serif;
-  font-size: var(--size-10);
 
   th,
   td {

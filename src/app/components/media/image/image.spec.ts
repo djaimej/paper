@@ -24,4 +24,13 @@ describe('Image', () => {
     expect(img?.getAttribute('src')).toBe('photo.jpg');
     expect(fixture.nativeElement.querySelector('svg-icon')).toBeNull();
   });
+
+  it('forces ratio 1 for circles', () => {
+    const fixture = create();
+    fixture.componentRef.setInput('type', 'circle');
+    fixture.componentRef.setInput('ratio', 2);
+    fixture.detectChanges();
+    const el = fixture.nativeElement.querySelector('.image') as HTMLElement;
+    expect(el.style.aspectRatio).toBe('1');
+  });
 });

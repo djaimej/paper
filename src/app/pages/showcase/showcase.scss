@@ -1,12 +1,57 @@
-main {
-  max-width: 960px;
+.showcase {
+  display: flex;
+  gap: var(--s-10);
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 var(--s-08) var(--s-15);
+  padding: var(--s-10) var(--s-08);
 }
 
-.showcase-header {
+.showcase-nav {
+  position: sticky;
+  top: var(--s-10);
+  align-self: flex-start;
+  width: 200px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: var(--s-05);
-  padding: var(--s-10) 0;
+  padding: var(--s-05);
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-05);
+
+    a {
+      color: var(--gray-500);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--black);
+      }
+    }
+  }
+}
+
+.showcase-content {
+  flex: 1;
+  min-width: 0; // deja que los <pre> con overflow no rompan el flex
+  padding-top: var(--s-15);
+  padding-bottom: var(--s-25);
+}
+
+app-showcase-section {
+  display: block;
+  scroll-margin-top: var(--s-10);
+}
+
+@media (max-width: 720px) {
+  .showcase {
+    flex-direction: column;
+  }
+
+  .showcase-nav {
+    position: static;
+    width: auto;
+  }
 }
