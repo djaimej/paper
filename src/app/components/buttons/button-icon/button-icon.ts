@@ -22,7 +22,7 @@ export class ButtonIcon {
   readonly type = input<ButtonType>('button');
   readonly size = input<Size>('md');
   readonly disabled = input(false);
-  readonly onClick = output<Event>();
+  readonly clicked = output<Event>();
 
   protected readonly src = computed(() => `icons/${this.icon().library}/${this.icon().file}`);
   protected readonly classes = computed(
@@ -35,6 +35,6 @@ export class ButtonIcon {
       event.stopPropagation();
       return;
     }
-    this.onClick.emit(event);
+    this.clicked.emit(event);
   }
 }

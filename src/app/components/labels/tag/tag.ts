@@ -10,7 +10,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Tag {
-  readonly disipable = input(false);
+  readonly dismissible = input(false);
   readonly type = input<'white' | 'black'>('white');
   readonly text = input('');
 

@@ -6,7 +6,7 @@ describe('Button', () => {
     const fixture = TestBed.createComponent(Button);
     fixture.detectChanges();
     const seen: Event[] = [];
-    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+    fixture.componentInstance.clicked.subscribe((e) => seen.push(e));
 
     fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
     expect(seen).toHaveLength(1);
@@ -17,7 +17,7 @@ describe('Button', () => {
     fixture.componentRef.setInput('disabled', true);
     fixture.detectChanges();
     const seen: Event[] = [];
-    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+    fixture.componentInstance.clicked.subscribe((e) => seen.push(e));
 
     fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
     expect(seen).toHaveLength(0);

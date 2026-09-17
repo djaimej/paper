@@ -17,7 +17,7 @@ export class Button {
   readonly size = input<Size>('md');
   readonly variant = input<Variant>('solid');
   readonly disabled = input(false);
-  readonly onClick = output<Event>();
+  readonly clicked = output<Event>();
 
   protected readonly classes = computed(
     () => `${this.size()} ${this.variant()} ${this.disabled() ? 'disabled' : ''}`,
@@ -29,6 +29,6 @@ export class Button {
       event.stopPropagation();
       return;
     }
-    this.onClick.emit(event);
+    this.clicked.emit(event);
   }
 }

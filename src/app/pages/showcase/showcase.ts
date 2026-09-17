@@ -7,26 +7,12 @@ import { DATA_VISUALIZATION, EMOTICON, FOOD_DRINK, INTERFACE_INTERACTION, USERS_
 import { ThemeService } from '@shared/services/theme.service';
 import { ToastService } from '@shared/services/toast.service';
 import { ShowcaseSection } from './showcase-section/showcase-section';
-import { Button } from '@components/buttons/button/button';
-import { ButtonIcon } from '@components/buttons/button-icon/button-icon';
-import { ButtonFloatingAction } from '@components/buttons/button-floating-action/button-floating-action';
-import { Checkbox } from '@components/controls/checkbox/checkbox';
-import { CheckboxItem } from '@components/controls/checkbox-item/checkbox-item';
-import { Radio } from '@components/controls/radio/radio';
-import { RadioItem } from '@components/controls/radio-item/radio-item';
-import { Switch } from '@components/controls/switch/switch';
-import { Select } from '@components/form-elements/select/select';
-import { TextField } from '@components/form-elements/text-field/text-field';
-import { TextFieldIcon } from '@components/form-elements/text-field-icon/text-field-icon';
-import { TextFieldGroup } from '@components/form-elements/text-field-group/text-field-group';
-import { TextBox } from '@components/form-elements/text-box/text-box';
-import { TextBoxGroup } from '@components/form-elements/text-box-group/text-box-group';
-import { Badge } from '@components/labels/badge/badge';
-import { Tag } from '@components/labels/tag/tag';
-import { Image } from '@components/media/image/image';
-import { Icon } from '@components/media/icon/icon';
-import { RowItem } from '@components/list/row-item/row-item';
-import { RowMessage } from '@components/list/row-message/row-message';
+import { Button, ButtonIcon, ButtonFloatingAction } from '@components/buttons';
+import { Checkbox, CheckboxItem, Radio, RadioItem, Switch } from '@components/controls';
+import { Select, TextField, TextFieldIcon, TextFieldGroup, TextBox, TextBoxGroup } from '@components/form-elements';
+import { Badge, Tag } from '@components/labels';
+import { RowItem, RowMessage } from '@components/list';
+import { Icon, Image } from '@components/media';
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
 
 @Component({

@@ -12,7 +12,7 @@ describe('ButtonIcon', () => {
     const fixture = create();
     fixture.detectChanges();
     const seen: Event[] = [];
-    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+    fixture.componentInstance.clicked.subscribe((e) => seen.push(e));
     fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
     expect(seen).toHaveLength(1);
   });
@@ -22,7 +22,7 @@ describe('ButtonIcon', () => {
     fixture.componentRef.setInput('disabled', true);
     fixture.detectChanges();
     const seen: Event[] = [];
-    fixture.componentInstance.onClick.subscribe((e) => seen.push(e));
+    fixture.componentInstance.clicked.subscribe((e) => seen.push(e));
     fixture.nativeElement.dispatchEvent(new MouseEvent('click'));
     expect(seen).toHaveLength(0);
   });
