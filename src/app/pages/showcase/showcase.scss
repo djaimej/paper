@@ -44,11 +44,6 @@
   top: var(--s-05);
   left: var(--s-05);
   z-index: 20;
-  cursor: pointer;
-  padding: var(--s-05);
-  background-color: var(--white);
-  border: var(--border);
-  border-radius: var(--s-05);
 }
 
 .showcase-content {
@@ -74,10 +69,13 @@ app-showcase-section {
     width: min(260px, 80vw);
     padding: var(--s-10) var(--s-08);
     background-color: var(--white);
-    border-right: var(--border);
     transform: translateX(-100%);
     transition: transform 0.2s ease;
     z-index: 15;
+
+    h1 {
+      margin-top: 1em;
+    }
 
     &.open {
       transform: translateX(0);

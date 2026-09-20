@@ -1,8 +1,6 @@
 <div class="showcase">
-  <button class="nav-toggle" type="button" (click)="navOpen.update(v => !v)" [attr.aria-expanded]="navOpen()"
-    aria-label="Menú de secciones">
-    <app-icon [icon]="menuIcon"></app-icon>
-  </button>
+  <app-button-icon class="nav-toggle" size="lg" variant="outline" [icon]="menuIcon" (clicked)="navOpen.update(v => !v)"
+    [attr.aria-expanded]="navOpen()" aria-label="Menú de secciones"></app-button-icon>
   <aside class="showcase-nav" [class.open]="navOpen()">
     <h1>Paper</h1>
     <nav>

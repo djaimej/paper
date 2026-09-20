@@ -39,7 +39,7 @@ export class Showcase {
   protected readonly color = Color;
   protected readonly position = TooltipPosition;
 
-  protected readonly menuIcon = INTERFACE_INTERACTION.menu;
+  protected readonly menuIcon = INTERFACE_INTERACTION.menuHamburger;
   protected readonly userIcon = USERS_PEOPLE.user;
   protected readonly searchIcon = INTERFACE_INTERACTION.search;
   protected readonly bookmarkFullIcon = INTERFACE_INTERACTION.bookmarkFull;
