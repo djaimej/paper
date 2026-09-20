@@ -7,7 +7,6 @@ import { DATA_VISUALIZATION, EMOTICON, FOOD_DRINK, INTERFACE_INTERACTION, USERS_
 import { ThemeService } from '@shared/services/theme.service';
 import { ToastService } from '@shared/services/toast.service';
 import { ShowcaseSection } from './showcase-section/showcase-section';
-import { CodeBlock } from './code-block/code-block';
 import { Button, ButtonIcon, ButtonFloatingAction } from '@components/buttons';
 import { Checkbox, CheckboxItem, Radio, RadioItem, Switch } from '@components/controls';
 import { Select, TextField, TextFieldIcon, TextFieldGroup, TextBox, TextBoxGroup } from '@components/form-elements';
@@ -15,11 +14,12 @@ import { Badge, Tag } from '@components/labels';
 import { RowItem, RowMessage } from '@components/list';
 import { Icon, Image } from '@components/media';
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
+import { ActiveSectionDirective } from './active-section.directive';
 
 @Component({
   selector: 'app-showcase',
   imports: [
-    ReactiveFormsModule, FormsModule, TooltipDirective, ShowcaseSection,
+    ReactiveFormsModule, FormsModule, ShowcaseSection, ActiveSectionDirective, TooltipDirective,
     Button, ButtonIcon, ButtonFloatingAction, Checkbox, CheckboxItem, Radio, RadioItem,
     Switch, Select, TextField, TextFieldIcon, TextFieldGroup, TextBox, TextBoxGroup,
     Badge, Tag, Image, Icon, RowItem, RowMessage,
@@ -32,11 +32,14 @@ export class Showcase {
   protected readonly title = signal('Paper');
   protected readonly theme = inject(ThemeService);
   protected readonly sections = viewChildren(ShowcaseSection);
-  protected readonly toast = inject(ToastService);
+  protected readonly activeId = signal('');
+  protected readonly navOpen = signal(false);
 
+  protected readonly toast = inject(ToastService);
   protected readonly color = Color;
   protected readonly position = TooltipPosition;
 
+  protected readonly menuIcon = INTERFACE_INTERACTION.menu;
   protected readonly userIcon = USERS_PEOPLE.user;
   protected readonly searchIcon = INTERFACE_INTERACTION.search;
   protected readonly bookmarkFullIcon = INTERFACE_INTERACTION.bookmarkFull;

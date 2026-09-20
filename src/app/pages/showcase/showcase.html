@@ -1,16 +1,22 @@
 <div class="showcase">
-  <aside class="showcase-nav">
+  <button class="nav-toggle" type="button" (click)="navOpen.update(v => !v)" [attr.aria-expanded]="navOpen()"
+    aria-label="Menú de secciones">
+    <app-icon [icon]="menuIcon"></app-icon>
+  </button>
+  <aside class="showcase-nav" [class.open]="navOpen()">
     <h1>Paper</h1>
     <nav>
       @for (section of sections(); track section.anchor()) {
-      <a [href]="'#' + section.anchor()">{{ section.title() }}</a>
+      <a [href]="'#' + section.anchor()" [class.active]="activeId() === section.anchor()">
+        {{ section.title() }}
+      </a>
       }
     </nav>
     <app-switch [ngModel]="theme.isDark()" (ngModelChange)="theme.setDark($event)" [label]="'Dark mode'"
       [id]="'theme-switch'"></app-switch>
   </aside>
 
-  <main class="showcase-content">
+  <main class="showcase-content" appActiveSection (activeSection)="activeId.set($event)">
     <app-showcase-section title="Buttons"
       description="Acción principal en tres variantes (solid, outline, ghost) y tres tamaños." [code]="buttonsCode">
       <app-button size="lg">Solid</app-button>

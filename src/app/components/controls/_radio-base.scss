@@ -1,0 +1,77 @@
+// Estilos compartidos de <app-radio> y <app-radio-item>.
+
+@mixin radio-base($mark-size: var(--size-10)) {
+  svg-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .radio {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 0;
+
+    svg {
+      display: none;
+      width: $mark-size;
+      height: $mark-size;
+    }
+
+    .label {
+      font-family: PatrickHand, sans-serif;
+      font-size: var(--size-10);
+    }
+  }
+
+  /* Oculta el radio nativo */
+  .radio .invisible {
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  /* Marca personalizada */
+  .radio .mark {
+    position: relative;
+    float: left;
+    border: var(--border-width) solid var(--black);
+    border-radius: 50%;
+  }
+
+  .radio:hover input~.mark {
+    background-color: var(--white);
+  }
+
+  .radio input:checked~.mark {
+    background-color: var(--black);
+    display: block;
+
+    path {
+      fill: var(--white);
+    }
+
+    svg {
+      display: block;
+    }
+  }
+
+  .radio input:checked~path {
+    fill: var(--white);
+  }
+
+  .radio input:checked~.label {
+    color: var(--gray-500);
+    text-decoration: line-through;
+  }
+
+  .radio input:focus-visible~.mark {
+    outline: var(--border-width) solid var(--black);
+    outline-offset: 2px;
+  }
+}
