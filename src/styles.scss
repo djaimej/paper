@@ -157,6 +157,11 @@ svg-icon {
   pointer-events: none;
 }
 
+.spacing-section {
+  height: 20vh;
+  width: 100%;
+}
+
 /* ANIMACIONES Y TRANSICIONES */
 
 @media (prefers-reduced-motion: reduce) {
