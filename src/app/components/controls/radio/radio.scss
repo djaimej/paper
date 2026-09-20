@@ -11,16 +11,17 @@ svg-icon {
   cursor: pointer;
   user-select: none;
   margin-bottom: 0;
-
   svg {
     display: none;
-    width: var(--size-10);
-    height: var(--size-10);
+    width: var(--size-08);
+    height: var(--size-08);
   }
 
   .label {
     font-family: PatrickHand, sans-serif;
     font-size: var(--size-10);
+    margin-left: var(--s-05);
+    line-height: 1em;
   }
 }
 

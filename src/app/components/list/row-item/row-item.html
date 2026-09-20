@@ -5,10 +5,10 @@
   </div>
   }
   <div class="text">
-    <label>
+    <div class="label-container">
       <span class="label">{{ label() }}</span>
       <a (click)="onAction.emit()" class="action">{{ action() }}</a>
-    </label>
+    </div>
     <span class="description">{{ description() }}</span>
   </div>
 </div>
