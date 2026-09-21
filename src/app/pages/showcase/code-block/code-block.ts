@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { Button } from '@components/buttons';
 
 @Component({
   selector: 'app-code-block',
   templateUrl: './code-block.html',
   styleUrl: './code-block.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Button],
 })
 export class CodeBlock {
   readonly code = input.required<string>();

@@ -23,7 +23,7 @@
 
 @mixin sizes {
   &.lg button {
-    height: var(--size-28);
+    height: var(--size-26);
     font-size: var(--size-14);
   }
 
@@ -33,7 +33,7 @@
   }
 
   &.sm button {
-    height: var(--size-12);
+    height: var(--size-14);
     font-size: var(--size-06);
   }
 }
@@ -56,7 +56,7 @@
 
   &.outline button {
     color: var(--black);
-    background-color: transparent;
+    background-color: var(--white);
     border: var(--border);
 
     path {

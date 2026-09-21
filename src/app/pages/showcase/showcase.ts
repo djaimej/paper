@@ -70,7 +70,9 @@ export class Showcase {
 <app-button-icon variant="outline" [icon]="userIcon"></app-button-icon>
 <app-button-icon size="sm" variant="ghost" [icon]="bookmarkFullIcon">&nbsp;Bookmark</app-button-icon>
 
-<app-button-floating-action [icon]="userIcon"></app-button-floating-action>`;
+<app-button-floating-action [icon]="userIcon"></app-button-floating-action>
+
+<app-switch [ngModel]="theme.isDark()" (ngModelChange)="theme.setDark($event)" label="Dark mode"></app-switch>`;
 
   protected readonly selectionControlsCode =
     `<app-checkbox [id]="'cb'">&nbsp;Simple</app-checkbox>
