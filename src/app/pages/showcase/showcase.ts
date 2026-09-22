@@ -38,6 +38,8 @@ export class Showcase {
   protected readonly toast = inject(ToastService);
   protected readonly color = Color;
   protected readonly position = TooltipPosition;
+  protected readonly radioValue = signal('1');
+  protected readonly radioItemValue = signal('2');
 
   protected readonly menuIcon = INTERFACE_INTERACTION.menuHamburger;
   protected readonly userIcon = USERS_PEOPLE.user;
@@ -76,13 +78,22 @@ export class Showcase {
 
   protected readonly selectionControlsCode =
     `<app-checkbox [id]="'cb'">&nbsp;Simple</app-checkbox>
+
 <form [formGroup]="myForm">
   <app-checkbox-item formControlName="deploy" label="Deploy to production"></app-checkbox-item>
 </form>
 
-<app-radio [id]="'r4'" value="1" [name]="'paper-radio'"></app-radio>
-<app-radio [id]="'r5'" value="2" [name]="'paper-radio'"></app-radio>
-<app-radio-item [id]="'ri0'" [label]="'Name me'" value="1" [name]="'paper-radio-item'"></app-radio-item>`;
+<app-radio [id]="'r4'" value="1" [name]="'paper-radio'" [checked]="radioValue() === '1'"
+  (selected)="radioValue.set($event)"></app-radio>
+<app-radio [id]="'r5'" value="2" [name]="'paper-radio'" [checked]="radioValue() === '2'"
+  (selected)="radioValue.set($event)"></app-radio>
+
+<app-radio-item [id]="'ri0'" [label]="'Rock'" value="1" [name]="'paper-radio-item'"
+  [checked]="radioItemValue() === '1'" (selected)="radioItemValue.set($event)"></app-radio-item>
+<app-radio-item [id]="'ri1'" [label]="'Paper'" value="1" [name]="'paper-radio-item'"
+  [checked]="radioItemValue() === '2'" (selected)="radioItemValue.set($event)"></app-radio-item>
+<app-radio-item [id]="'ri2'" [label]="'Scissors'" value="1" [name]="'paper-radio-item'"
+  [checked]="radioItemValue() === '3'" (selected)="radioItemValue.set($event)"></app-radio-item>`;
 
   protected readonly formFieldsCode =
     `<app-select [id]="'s7'" [options]="options"></app-select>

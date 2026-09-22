@@ -45,10 +45,17 @@
         <app-checkbox-item formControlName="deploy" label="Deploy to production"></app-checkbox-item>
       </form>
       <div class="spacing"></div>
-      <app-radio [id]="'r4'" value="1" [name]="'paper-radio'"></app-radio>
-      <app-radio [id]="'r5'" value="2" [name]="'paper-radio'"></app-radio>
+      <app-radio [id]="'r4'" value="1" [name]="'paper-radio'" [checked]="radioValue() === '1'"
+        (selected)="radioValue.set($event)"></app-radio>
+      <app-radio [id]="'r5'" value="2" [name]="'paper-radio'" [checked]="radioValue() === '2'"
+        (selected)="radioValue.set($event)"></app-radio>
       <div class="spacing"></div>
-      <app-radio-item [id]="'ri0'" [label]="'Name me'" value="1" [name]="'paper-radio-item'"></app-radio-item>
+      <app-radio-item [id]="'ri0'" [label]="'Rock'" value="1" [name]="'paper-radio-item'"
+        [checked]="radioItemValue() === '1'" (selected)="radioItemValue.set($event)"></app-radio-item>
+      <app-radio-item [id]="'ri1'" [label]="'Paper'" value="1" [name]="'paper-radio-item'"
+        [checked]="radioItemValue() === '2'" (selected)="radioItemValue.set($event)"></app-radio-item>
+      <app-radio-item [id]="'ri2'" [label]="'Scissors'" value="1" [name]="'paper-radio-item'"
+        [checked]="radioItemValue() === '3'" (selected)="radioItemValue.set($event)"></app-radio-item>
     </app-showcase-section>
 
     <app-showcase-section title="Form fields"
@@ -104,8 +111,8 @@
       <app-row-message [label]="'No description'" [date]="'date'"></app-row-message>
     </app-showcase-section>
 
-    <app-showcase-section title="Tooltip" justify="around" description="Descripción emergente sobre cualquier elemento; sigue el tema."
-      [code]="tooltipCode">
+    <app-showcase-section title="Tooltip" justify="around"
+      description="Descripción emergente sobre cualquier elemento; sigue el tema." [code]="tooltipCode">
       <b [color]="color.BLACK" [position]="position.RIGHT"
         [tooltip]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis porttitor leo diam risus vel elementum in vulputate.'">
         Hover me right</b>
