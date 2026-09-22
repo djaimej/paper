@@ -1,6 +1,6 @@
 <label class="radio">
-  <input #el [id]="id()" [name]="name()" [value]="value()" class="invisible" type="radio" [checked]="controlValue()"
-    [disabled]="isDisabled()" (change)="update(el.checked)">
+  <input #el [id]="id()" [name]="name()" [value]="value()" class="invisible" type="radio" [checked]="checked()"
+    [disabled]="disabled()" (change)="selected.emit(value())">
   <span class="mark">
     <svg-icon src="icons/interface-interaction/check.svg"></svg-icon>
   </span>
